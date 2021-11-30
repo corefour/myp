@@ -19,17 +19,7 @@
     "projectAuth": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "projectAuthPostConfirmation",
-          "triggerProvider": "Cognito",
-          "attributes": [
-            "Arn",
-            "Name"
-          ]
-        }
-      ],
+      "dependsOn": [],
       "customAuth": false,
       "frontendAuthConfig": {
         "socialProviders": [],
@@ -80,11 +70,6 @@
     }
   },
   "function": {
-    "projectAuthPostConfirmation": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
     "AdminQueries3f8e69fc": {
       "service": "Lambda",
       "providerPlugin": "awscloudformation",

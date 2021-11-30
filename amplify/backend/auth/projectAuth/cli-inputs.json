@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "project2423fe81_identitypool_2423fe81",
+    "identityPoolName": "projectIdentity",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "projec2423fe81",
-    "userPoolName": "project2423fe81_userpool_2423fe81",
+    "resourceNameTruncated": "projec18b66e2e",
+    "userPoolName": "projectPool",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -20,7 +20,9 @@
     "passwordPolicyMinLength": 8,
     "passwordPolicyCharacters": [],
     "requiredAttributes": [
-      "email"
+      "birthdate",
+      "email",
+      "name"
     ],
     "aliasAttributes": [],
     "userpoolClientGenerateSecret": false,
@@ -31,18 +33,46 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "projec2423fe81_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "projec18b66e2e_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "2423fe81",
-    "resourceName": "project2423fe81",
+    "sharedId": "18b66e2e",
+    "resourceName": "projectAuth",
     "authSelections": "identityPoolAndUserPool",
-    "useDefault": "default",
+    "useDefault": "manual",
+    "thirdPartyAuth": false,
     "usernameAttributes": [
       "email"
     ],
-    "userPoolGroupList": [],
+    "userPoolGroups": false,
+    "adminQueries": true,
+    "triggers": {},
+    "hostedUI": false,
+    "userPoolGroupList": [
+      "Admins",
+      "Users"
+    ],
+    "adminQueryGroup": "Admins",
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,
-    "useEnabledMfas": true
+    "useEnabledMfas": true,
+    "authRoleArn": {
+      "Fn::GetAtt": [
+        "AuthRole",
+        "Arn"
+      ]
+    },
+    "unauthRoleArn": {
+      "Fn::GetAtt": [
+        "UnauthRole",
+        "Arn"
+      ]
+    },
+    "breakCircularDependency": true,
+    "dependsOn": [],
+    "permissions": [],
+    "authProviders": [],
+    "parentStack": {
+      "Ref": "AWS::StackId"
+    }
   }
 }

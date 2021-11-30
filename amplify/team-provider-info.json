@@ -13,7 +13,9 @@
     },
     "categories": {
       "auth": {
-        "project2423fe81": {}
+        "project2423fe81": {},
+        "userPoolGroups": {},
+        "projectAuth": {}
       }
     }
   }

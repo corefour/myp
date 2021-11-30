@@ -1,6 +1,10 @@
 export type AmplifyDependentResourcesAttributes = {
     "auth": {
-        "project2423fe81": {
+        "userPoolGroups": {
+            "AdminsGroupRole": "string",
+            "UsersGroupRole": "string"
+        },
+        "projectAuth": {
             "IdentityPoolId": "string",
             "IdentityPoolName": "string",
             "UserPoolId": "string",
@@ -8,6 +12,21 @@ export type AmplifyDependentResourcesAttributes = {
             "UserPoolName": "string",
             "AppClientIDWeb": "string",
             "AppClientID": "string"
+        }
+    },
+    "api": {
+        "AdminQueries": {
+            "RootUrl": "string",
+            "ApiName": "string",
+            "ApiId": "string"
+        }
+    },
+    "function": {
+        "AdminQueries3f8e69fc": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string"
         }
     }
 }

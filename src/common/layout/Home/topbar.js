@@ -1,9 +1,6 @@
 import React from "react";
 import {
     Drawer,
-    DrawerBody,
-    DrawerFooter,
-    DrawerHeader,
     DrawerOverlay,
     DrawerContent,
     DrawerCloseButton,
@@ -14,10 +11,10 @@ import {
     Menu,
     MenuButton,
     MenuItem,
-    MenuList
+    MenuList,
+    Link
 } from '@chakra-ui/react';
 import { FaBars, FaAngleDown, FaUserCircle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
 import { Auth } from 'aws-amplify';
 
 
@@ -39,7 +36,7 @@ function TopBar() {
         <Box bgColor="blue.50" py="15">
             <Container maxW='container.xl'>
                 <Box float="left">
-                    <Button ref={btnRef} bgColor="gray.700" color="gray.100" _hover={{ bg: "gray.900" }} onClick={onOpen}>
+                    <Button ref={btnRef} bgColor="gray.700" color="gray.100" _hover={{ bg: "pink.600" }} onClick={onOpen}>
                         <FaBars />
                     </Button>
                     <Drawer
@@ -47,11 +44,13 @@ function TopBar() {
                         placement='left'
                         onClose={onClose}
                         finalFocusRef={btnRef}
+                        className="sidenav"
                     >
                         <DrawerOverlay />
-                        <DrawerContent p="30">
+                        <DrawerContent py="50px" px="20px">
                             <DrawerCloseButton />
-                            <Link to="/dashboard">Dashboard</Link>
+                            <Link to="/dashboard" bgColor="gray.700" color="gray.100" py="10px" px="30px" rounded="5" mb="20px" _hover={{ bg: "pink.600" }}>Dashboard</Link>
+                            <Link to="/dashboard" bgColor="gray.700" color="gray.100" py="10px" px="30px" rounded="5" mb="20px"_hover={{ bg: "pink.600" }}>Users</Link>
                         </DrawerContent>
                     </Drawer>
                 </Box>

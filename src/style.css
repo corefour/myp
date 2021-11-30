@@ -2,6 +2,12 @@
     clear: both;
 }
 
+/* Menu */
+
+a:hover{
+    text-decoration: none !important;
+}
+
 .chakra-button:focus{
     box-shadow: none !important;
 }

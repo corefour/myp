@@ -13,17 +13,35 @@ import {
     MenuButton,
     MenuItem,
     MenuList,
-    Button
+    Button,
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalFooter,
+    ModalBody,
+    ModalCloseButton,
+    useDisclosure,
+    FormControl,
+    FormLabel,
+    Input
 } from '@chakra-ui/react';
 import { FaAngleDown } from 'react-icons/fa';
 
 export default function Home({signOut, user})
 {
+
+    const { isOpen, onOpen, onClose } = useDisclosure()
+
+    const initialRef = React.useRef()
+    const finalRef = React.useRef()
+
    return(
     <>
         <TopBar/>
         <Box mt="40px">
             <Container maxW='container.xl'>
+            <Button onClick={onOpen} float="right" bgColor="pink.500" color="blue.50" mb="30px" _hover={{ bg: "pink.700" }}>Add User</Button>
                 <Table variant='striped' colorScheme='gray'>
                     <Thead>
                         <Tr>
@@ -31,6 +49,7 @@ export default function Home({signOut, user})
                             <Th>Username</Th>
                             <Th>Profile Image</Th>
                             <Th>Email Address</Th>
+                            <Th>Status</Th>
                             <Th>Action</Th>
                         </Tr>
                     </Thead>
@@ -40,9 +59,10 @@ export default function Home({signOut, user})
                             <Td>shivanipandit88</Td>
                             <Td>Image 1</Td>
                             <Td>shivani.pandit@sjsu.edu</Td>
+                            <Td color="orange">Active</Td>
                             <Td>
                             <Menu>
-                                <MenuButton as={Button} rightIcon={<FaAngleDown />} bgColor="gray.700" color="blue.50" _hover={{ bg: "gray.900" }} _active={{ bg: "gray.900" }}>
+                                <MenuButton as={Button} rightIcon={<FaAngleDown />} bgColor="gray.700" color="blue.50" _hover={{ bg: "pink.600" }} _active={{ bg: "pink.600" }}>
                                     Select
                                 </MenuButton>
                                 <MenuList>
@@ -58,9 +78,10 @@ export default function Home({signOut, user})
                             <Td>rajkinkhabwala</Td>
                             <Td>Image 2</Td>
                             <Td>rajparagbhai.kinkhabwala@sjsu.edu </Td>
+                            <Td color="red">Disabled</Td>
                             <Td>
                             <Menu>
-                                <MenuButton as={Button} rightIcon={<FaAngleDown />} bgColor="gray.700" color="blue.50" _hover={{ bg: "gray.900" }} _active={{ bg: "gray.900" }}>
+                                <MenuButton as={Button} rightIcon={<FaAngleDown />} bgColor="gray.700" color="blue.50" _hover={{ bg: "pink.600" }} _active={{ bg: "pink.600" }}>
                                     Select
                                 </MenuButton>
                                 <MenuList>
@@ -76,9 +97,10 @@ export default function Home({signOut, user})
                             <Td>yashkamtekar</Td>
                             <Td >Image 3</Td>
                             <Td>yash.kamtekar@sjsu.edu</Td>
+                            <Td color="orange">Active</Td>
                             <Td>
                             <Menu>
-                                <MenuButton as={Button} rightIcon={<FaAngleDown />} bgColor="gray.700" color="blue.50" _hover={{ bg: "gray.900" }} _active={{ bg: "gray.900" }}>
+                                <MenuButton as={Button} rightIcon={<FaAngleDown />} bgColor="gray.700" color="blue.50" _hover={{ bg: "pink.600" }} _active={{ bg: "pink.600" }}>
                                     Select
                                 </MenuButton>
                                 <MenuList>
@@ -91,6 +113,36 @@ export default function Home({signOut, user})
                         </Tr>
                     </Tbody>
                 </Table>
+                <Modal
+                    initialFocusRef={initialRef}
+                    finalFocusRef={finalRef}
+                    isOpen={isOpen}
+                    onClose={onClose}
+                >
+                    <ModalOverlay />
+                    <ModalContent>
+                    <ModalHeader>Create your account</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody pb={6}>
+                        <FormControl>
+                        <FormLabel>First name</FormLabel>
+                        <Input ref={initialRef} placeholder='First name' />
+                        </FormControl>
+
+                        <FormControl mt={4}>
+                        <FormLabel>Last name</FormLabel>
+                        <Input placeholder='Last name' />
+                        </FormControl>
+                    </ModalBody>
+
+                    <ModalFooter>
+                        <Button colorScheme='blue' mr={3}>
+                        Save
+                        </Button>
+                        <Button onClick={onClose}>Cancel</Button>
+                    </ModalFooter>
+                    </ModalContent>
+                </Modal>
             </Container>
         </Box>
     </>

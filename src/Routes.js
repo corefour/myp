@@ -1,6 +1,6 @@
 import React from 'react';
 import {Routes, Route} from 'react-router-dom';
-import Page404 from './layouts/errors/Page404';
+import Page404 from './common/layout/errors/Page404';
 
 const Router = () => (
     <Routes>

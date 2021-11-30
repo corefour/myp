@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
     Box,
     Container,
@@ -31,7 +31,12 @@ function User({ signOut, user }) {
     const initialRef = React.useRef()
     const finalRef = React.useRef()
 
-    console.log(listUsers(10).then((res) => console.log(res)))
+    const [userDetails, setUserDetails] = useState([])
+
+    useEffect(() => {
+        listUsers(10).then((res) => setUserDetails(res.Users))
+    }, [])
+
 
     return (
         <Box mt="40px">
@@ -49,11 +54,7 @@ function User({ signOut, user }) {
                         </Tr>
                     </Thead>
                     <Tbody>
-                        <UserRow userdetails={[
-                            { id: 1, name: "Shivani Pandit", email: "shivani.pandit@sjsu.edu", image: "image 1", status: true },
-                            { id: 2, name: "Raj Kinkhabwala", email: "raj.kinkhabwala@sjsu.edu", image: "image 2", status: false },
-                            { id: 3, name: "Yash Kamtekar", email: "yash.kamtekar@sjsu.edu", image: "image 3", status: false },
-                        ]} />
+                        {userDetails.length ? <UserRow userdetails={userDetails} /> : <>Loading</>}
                     </Tbody>
                 </Table>
                 <Modal

@@ -14,13 +14,13 @@ import { FaAngleDown } from 'react-icons/fa';
 function UserRow(props) {
     return (
         <>
-            {props.userdetails.map((item) => (
-                <Tr key={item.id}>
-                    <Td>{item.id}</Td>
-                    <Td>{item.name}</Td>
-                    <Td>{item.image}</Td>
-                    <Td>{item.email}</Td>
-                    <Td color={item.status ? "orange" : "red"}>{item.status ? "Active" : "Disabled"}</Td>
+            {props.userdetails.map((item, i) => (
+                <Tr key={item.Attributes[0].Value}>
+                    <Td>{i + 1}</Td>
+                    <Td>{item.Attributes[3].Value}</Td>
+                    <Td>{item.Attributes.image}</Td>
+                    <Td>{item.Attributes[4].Value}</Td>
+                    <Td color={item.Attributes[1].Value == 'true' ? "orange" : "red"}>{item.Attributes[1].Value ? "Active" : "Disabled"}</Td>
                     <Td>
                         <Menu>
                             <MenuButton as={Button} rightIcon={<FaAngleDown />} bgColor="gray.700" color="blue.50" _hover={{ bg: "gray.900" }} _active={{ bg: "gray.900" }}>

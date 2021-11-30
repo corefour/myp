@@ -18,7 +18,8 @@ import {
     useDisclosure,
     FormControl,
     FormLabel,
-    Input
+    Input,
+    Spinner
 } from '@chakra-ui/react';
 
 import listUsers from "../../services/Users/listUsers";
@@ -54,7 +55,13 @@ function User({ signOut, user }) {
                         </Tr>
                     </Thead>
                     <Tbody>
-                        {userDetails.length ? <UserRow userdetails={userDetails} /> : <>Loading</>}
+                        {userDetails.length ? <UserRow userdetails={userDetails} /> : <Spinner
+                            thickness='4px'
+                            speed='0.65s'
+                            emptyColor='gray.200'
+                            color='blue.500'
+                            size='xl'
+                        />}
                     </Tbody>
                 </Table>
                 <Modal

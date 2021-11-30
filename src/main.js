@@ -26,7 +26,9 @@ export default function Main() {
 const getBasename = path => substr(lastIndexOf('/')(path))(0)(path);
 
   return (
-    <Authenticator initialState="signUp" variation="modal">
+    <Authenticator 
+    initialState="signUp"
+    >
       {({ signOut, user }) => (
         <main>
           <h1>Hello {user.username}</h1>

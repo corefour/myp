@@ -5,7 +5,7 @@ import Home from './common/layout/Home';
 import Dashboard from './common/layout/Dashboard';
 
 
-const Router = ({signOut, user}) => (
+const Router = () => (
     <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />

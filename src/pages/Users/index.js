@@ -8,20 +8,10 @@ import {
     Tr,
     Th,
     Button,
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
-    ModalBody,
-    ModalCloseButton,
     useDisclosure,
-    FormControl,
-    FormLabel,
-    Input,
     Spinner
 } from '@chakra-ui/react';
-import listUsers from "../../services/Users/listUsers";
+import { listUsers } from "../../services/Users";
 import UserRow from "./components/userlist"
 
 function User({ signOut, user }) {

@@ -10,17 +10,14 @@ import {
     useDisclosure,
     Button, Input,
     Container,
-    Popover,
-    PopoverTrigger,
-    PopoverContent,
-    List,
-    PopoverBody,
-    PopoverHeader,
-    ListItem,
-    Avatar,
-    Box
+    Box,
+    Menu,
+    MenuButton,
+    MenuItem,
+    MenuList
 } from '@chakra-ui/react';
-import { FaBars } from 'react-icons/fa';
+import { FaBars, FaAngleDown, FaUserCircle } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import { Auth } from 'aws-amplify';
 
 
@@ -39,7 +36,7 @@ function TopBar() {
     }
 
     return (
-        <Box bgColor="blue.100" py="15">
+        <Box bgColor="blue.50" py="15">
             <Container maxW='container.xl'>
                 <Box float="left">
                     <Button ref={btnRef} bgColor="gray.700" color="gray.100" _hover={{ bg: "gray.900" }} onClick={onOpen}>
@@ -52,47 +49,21 @@ function TopBar() {
                         finalFocusRef={btnRef}
                     >
                         <DrawerOverlay />
-                        <DrawerContent>
+                        <DrawerContent p="30">
                             <DrawerCloseButton />
-                            <DrawerHeader>Create your account</DrawerHeader>
-
-                            <DrawerBody>
-                                <Input placeholder='Type here...' />
-                            </DrawerBody>
-
-                            <DrawerFooter>
-                                <Button variant='outline' mr={3} onClick={onClose}>
-                                    Cancel
-                                </Button>
-                                <Button colorScheme='blue'>Save</Button>
-                            </DrawerFooter>
+                            <Link to="/dashboard">Dashboard</Link>
                         </DrawerContent>
                     </Drawer>
                 </Box>
-                <Box float="right">
-                    <Popover>
-                        <PopoverTrigger>
-                            <Avatar size="sm" name='Yash Kamtekar' src='https://bit.ly/tioluwani-kolawole' />
-                        </PopoverTrigger>
-                        <PopoverContent>
-                            <PopoverHeader>Yash Kamtekar!</PopoverHeader>
-                            <PopoverBody>
-                                <List spacing={2}>
-                                    <ListItem>
-                                        Profile
-                                    </ListItem>
-                                    <ListItem>
-                                        Setting
-                                    </ListItem>
-                                    <ListItem>
-                                        <Button colorScheme='teal' variant='link' onClick={signOut}>
-                                            Logout
-                                        </Button>
-                                    </ListItem>
-                                </List>
-                            </PopoverBody>
-                        </PopoverContent>
-                    </Popover>
+                <Box float="right" className="profile">
+                    <Menu>
+                        <MenuButton rightIcon={<FaAngleDown />}>
+                            <FaUserCircle color="pink.800" />
+                        </MenuButton>
+                        <MenuList>
+                            <MenuItem onClick={signOut}>Logout</MenuItem>
+                        </MenuList>
+                    </Menu>
                 </Box>
                 <div className="clear"></div>
             </Container>

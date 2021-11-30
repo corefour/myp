@@ -29,6 +29,7 @@ export default function Main() {
 
     return (
         <ChakraProvider>
+            <Topbar />
             <Authenticator initialState="signUp" variation="modal">
                 {({ signOut, user }) => (
                     <>

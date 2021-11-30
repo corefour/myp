@@ -1,0 +1,13 @@
+.clear{
+    clear: both;
+}
+
+.chakra-button:focus{
+    box-shadow: none !important;
+}
+
+.profile .chakra-menu__menu-button span{
+    font-size: 30px;
+    margin: 5px 0 0;
+    color: #B83280
+}

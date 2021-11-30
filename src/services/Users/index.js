@@ -1,9 +1,8 @@
 import { Auth, API } from 'aws-amplify';
-let nextToken;
-    async function listUsers(limit){
+    export async function listUsers(limit){
         let apiName = 'AdminQueries';
         let path = '/listUsers';
-
+        let nextToken;
         let myInit = { 
             queryStringParameters: {
               "limit": limit,
@@ -20,4 +19,19 @@ let nextToken;
     return rest;
     }
 
-export default listUsers;
+    export async function getUser(username){
+        let apiName = 'AdminQueries';
+        let path = '/getUser';
+        let myInit = { 
+            queryStringParameters: {
+              "username": username
+            },
+            headers: {
+              'Content-Type' : 'application/json',
+              Authorization: `${(await Auth.currentSession()).getAccessToken().getJwtToken()}`
+            }
+        }
+
+        const { ...rest } =  await API.get(apiName, path, myInit);
+    return rest;
+    }

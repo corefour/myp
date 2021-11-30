@@ -20,7 +20,7 @@ import {
     FormLabel,
     Input
 } from '@chakra-ui/react';
-import listUsers from "../../../services/Users/listUsers";
+import { listUsers} from './../../../services/Users';
 import UserRow from "./components/userlist"
 
 function User({ signOut, user }) {
@@ -28,10 +28,7 @@ function User({ signOut, user }) {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     const initialRef = React.useRef()
-    const finalRef = React.useRef()
-
-    console.log(listUsers(10).then((res) => console.log(res)))
-    
+    const finalRef = React.useRef()    
     return (
         <Box mt="40px">
             <Container maxW='container.xl'>

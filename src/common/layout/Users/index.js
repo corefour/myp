@@ -64,20 +64,23 @@ function User({ signOut, user }) {
                         <ModalHeader>Create your account</ModalHeader>
                         <ModalCloseButton />
                         <ModalBody pb={6}>
-                            <FormControl>
-                                <FormLabel>First name</FormLabel>
-                                <Input ref={initialRef} placeholder='First name' />
+                            <FormControl isRequired>
+                                <FormLabel>Full Name</FormLabel>
+                                <Input ref={initialRef} placeholder='Full Name' />
                             </FormControl>
-
-                            <FormControl mt={4}>
-                                <FormLabel>Last name</FormLabel>
-                                <Input placeholder='Last name' />
+                            <FormControl mt={4} isRequired>
+                                <FormLabel>Profile Image</FormLabel>
+                                <Input placeholder='Profile Image' />
+                            </FormControl>
+                            <FormControl mt={4} id='email' isRequired>
+                                <FormLabel>Email address</FormLabel>
+                                <Input type='email' />
                             </FormControl>
                         </ModalBody>
 
                         <ModalFooter>
-                            <Button colorScheme='blue' mr={3}>
-                                Save
+                            <Button type="submit" bgColor="pink.500" color="blue.50" _hover={{ bg: "pink.700" }} mr={3}>
+                                Submit
                             </Button>
                             <Button onClick={onClose}>Cancel</Button>
                         </ModalFooter>

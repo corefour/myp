@@ -21,7 +21,7 @@ import {
     Input
 } from '@chakra-ui/react';
 
-import TableRow from "./components/userlist"
+import UserRow from "./components/userlist"
 
 function User({ signOut, user }) {
 
@@ -46,10 +46,10 @@ function User({ signOut, user }) {
                         </Tr>
                     </Thead>
                     <Tbody>
-                        <TableRow userdetails={[
-                            { id: 1, name: "Shivani Pandit", email: "shivani.pandit@sjsu.edu" },
-                            { id: 2, name: "Raj Kinkhabwala", email: "raj.kinkhabwala@sjsu.edu" },
-                            { id: 3, name: "Yash Kamtekar", email: "yash.kamtekar@sjsu.edu" }
+                        <UserRow userdetails={[
+                            { id: 1, name: "Shivani Pandit", email: "shivani.pandit@sjsu.edu", image: "image 1", status: true },
+                            { id: 2, name: "Raj Kinkhabwala", email: "raj.kinkhabwala@sjsu.edu", image: "image 2", status: false },
+                            { id: 3, name: "Yash Kamtekar", email: "yash.kamtekar@sjsu.edu", image: "image 3", status: false },
                         ]} />
                     </Tbody>
                 </Table>

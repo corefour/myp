@@ -4,7 +4,7 @@ import Page404 from './common/layout/errors/Page404';
 import Home from './common/layout/Home';
 
 
-const Router = ({signOut, user}) => (
+const Router = () => (
     <Routes>
         <Route path="/" element={<Home />} />
         {/* Do not remove this route its for 404 */}

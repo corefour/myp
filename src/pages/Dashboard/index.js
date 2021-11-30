@@ -22,8 +22,8 @@ export default function Dashboard() {
 
     return (
         <Box>
-            <TopBar />
             <HashRouter basename={getBasename(window.location.pathname)}>
+                <TopBar />
                 <Router />
             </HashRouter>
         </Box>

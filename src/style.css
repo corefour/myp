@@ -2,10 +2,30 @@
     clear: both;
 }
 
-/* Menu */
-
 a:hover{
     text-decoration: none !important;
+}
+
+/* Side Bar Menu */
+.sidenav a{
+    padding: 10px 30px;
+    background: #2D3748;
+    color: #EBF8FF;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: all 0.4s;
+}
+
+.sidenav a:hover{
+    background: #D53F8C;
+}
+
+/* Users Page - Admin */
+.users table .chakra-spinner{
+    position: absolute;
+    transform: translate(0%, -50%);
+    left: 50%;
+    margin-top: 50px;
 }
 
 .chakra-button:focus{

@@ -22,12 +22,6 @@ export type AmplifyDependentResourcesAttributes = {
         }
     },
     "function": {
-        "projectAuthPostConfirmation": {
-            "Name": "string",
-            "Arn": "string",
-            "LambdaExecutionRole": "string",
-            "Region": "string"
-        },
         "AdminQueries3f8e69fc": {
             "Name": "string",
             "Arn": "string",

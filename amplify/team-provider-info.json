@@ -17,11 +17,6 @@
         "projectAuth": {}
       },
       "function": {
-        "projectAuthPostConfirmation": {
-          "GROUP": "Users",
-          "deploymentBucketName": "amplify-project-dev-13410-deployment",
-          "s3Key": "amplify-builds/projectAuthPostConfirmation-6b5a6f4d677677426872-build.zip"
-        },
         "AdminQueries3f8e69fc": {
           "deploymentBucketName": "amplify-project-dev-13410-deployment",
           "s3Key": "amplify-builds/AdminQueries3f8e69fc-43672f31516d38495746-build.zip"

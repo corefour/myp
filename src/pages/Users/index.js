@@ -20,7 +20,8 @@ import {
     FormLabel,
     Input
 } from '@chakra-ui/react';
-import listUsers from "../../../services/Users/listUsers";
+
+import listUsers from "../../services/Users/listUsers";
 import UserRow from "./components/userlist"
 
 function User({ signOut, user }) {
@@ -31,7 +32,7 @@ function User({ signOut, user }) {
     const finalRef = React.useRef()
 
     console.log(listUsers(10).then((res) => console.log(res)))
-    
+
     return (
         <Box mt="40px">
             <Container maxW='container.xl'>

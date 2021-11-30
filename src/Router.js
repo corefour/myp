@@ -1,8 +1,8 @@
-import React from 'react';
-import {Routes, Route} from 'react-router-dom';
-import Page404 from './common/layout/errors/Page404';
-import Users from './common/layout/Users';
-import Home from './common/layout/Home';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Page404 from "./common/layout/errors/Page404";
+import Users from "./pages/Users/index";
+import Home from "./pages/Home/index";
 
 
 const Router = () => (

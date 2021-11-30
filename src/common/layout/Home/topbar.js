@@ -56,7 +56,7 @@ function TopBar() {
                 </Box>
                 <Box float="right" className="profile">
                     <Menu>
-                        <MenuButton rightIcon={<FaAngleDown />}>
+                        <MenuButton as={Button} rightIcon={<FaAngleDown />}>
                             <FaUserCircle color="pink.800" />
                         </MenuButton>
                         <MenuList>

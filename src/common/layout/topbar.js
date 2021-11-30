@@ -1,7 +1,7 @@
 import React from "react"
 import { Button, Flex, Popover, Box, PopoverTrigger, PopoverContent, List, PopoverBody, PopoverHeader, ListItem, Spacer, Wrap, WrapItem, Avatar } from '@chakra-ui/react'
 
-function TopBar(props) {
+function TopBar() {
     return (
         <>
             <Flex p={1}>
@@ -21,7 +21,7 @@ function TopBar(props) {
                                 <Avatar size="sm" name='Yash Kamtekar' src='https://bit.ly/tioluwani-kolawole' />
                             </PopoverTrigger>
                             <PopoverContent>
-                                <PopoverHeader>Yash Kamtekar!</PopoverHeader>
+                                <PopoverHeader><h1>Hello</h1></PopoverHeader>
                                 <PopoverBody>
                                     <List spacing={2}>
                                         <ListItem>
@@ -31,7 +31,7 @@ function TopBar(props) {
                                             Setting
                                         </ListItem>
                                         <ListItem>
-                                            Logout
+                                        <button>Sign out</button>
                                         </ListItem>
                                     </List>
                                 </PopoverBody>

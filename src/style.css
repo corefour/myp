@@ -1,0 +1,21 @@
+.clear{
+    clear: both;
+}
+
+.header{
+    background: #EBF8FF;
+    padding: 15px 0;
+    color: #2D3748;
+}
+
+.header .chakra-button{
+    box-shadow: none;
+}
+
+.header .menu{
+    float: left;
+}
+
+.header .profile{
+    float: right;
+}

@@ -11,7 +11,8 @@ import Router from './Routes';
 
 import { ChakraProvider } from "@chakra-ui/react";
 // import Auth from "./pages/main";
-// import Topbar from "./common/layout/topbar"
+import Topbar from "./common/layout/topbar"
+import './style.css';
 
 Amplify.configure(awsconfig);
 
@@ -33,6 +34,7 @@ export default function Main() {
 
     return (
         <ChakraProvider>
+            <Topbar />
             <Authenticator initialState="signUp" variation="modal">
                 {({ signOut, user }) => (
                     <main>
@@ -45,7 +47,6 @@ export default function Main() {
                 )}
             </Authenticator>
             {/* <Auth /> */}
-            {/* <Topbar /> */}
         </ChakraProvider>
     )
 }

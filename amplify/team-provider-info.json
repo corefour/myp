@@ -14,7 +14,8 @@
     },
     "categories": {
       "auth": {
-        "projectAuth": {}
+        "projectAuth": {},
+        "userPoolGroups": {}
       },
       "function": {
         "AdminQueries3f8e69fc": {

@@ -6,9 +6,8 @@ import awsconfig from './aws-exports';
 import { HashRouter } from "react-router-dom";
 import { lastIndexOf, substr } from '@7urtle/lambda';
 import Router from './Routes';
-import { ChakraProvider, Container } from "@chakra-ui/react";
-// import Auth from "./pages/main";
-// import Topbar from "./common/layout/topbar"
+import { ChakraProvider} from "@chakra-ui/react";
+import './style.css';
 
 Amplify.configure(awsconfig);
 
@@ -32,17 +31,16 @@ export default function Main() {
         <ChakraProvider>
             <Authenticator initialState="signUp" variation="modal">
                 {({ signOut, user }) => (
-                    <Container>
-                        <h1>Hello {user.username}</h1>
-                        <button onClick={signOut}>Sign out</button>
+                    <>
                         <HashRouter basename={getBasename(window.location.pathname)}>
                             <Router sigOut={signOut} user={user} />
                         </HashRouter>
-                    </Container>
+                        <h1>Hello {user.username}</h1>
+                        <button onClick={signOut}>Sign out</button>
+                    </>
                 )}
             </Authenticator>
             {/* <Auth /> */}
-            {/* <Topbar /> */}
         </ChakraProvider>
     )
 }

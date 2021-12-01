@@ -41,6 +41,22 @@ a:hover{
     margin-top: 50px;
 }
 
+/* Add User Page - Admin */
+.react-date-picker{
+    border: 1px solid #e2e8f0;
+    display: block !important;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.react-date-picker:hover{
+    border-color: #cbd5e0;
+}
+
+.react-date-picker__wrapper{
+    border: 0 !important;
+}
+
 .chakra-button:focus{
     box-shadow: none !important;
 }

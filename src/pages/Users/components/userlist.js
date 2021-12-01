@@ -28,7 +28,6 @@ function UserRow(props) {
                             </MenuButton>
                             <MenuList>
                                 <MenuItem>Delete</MenuItem>
-                                <MenuItem>Modify</MenuItem>
                                 <MenuItem>Disable</MenuItem>
                             </MenuList>
                         </Menu>

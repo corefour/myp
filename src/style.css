@@ -6,6 +6,19 @@ a:hover{
     text-decoration: none !important;
 }
 
+.btn-custom{
+    padding: 10px 30px;
+    background: #2D3748;
+    color: #EBF8FF;
+    border-radius: 5px;
+    display: inline-block;
+    transition: all 0.4s;
+}
+
+.btn-custom:hover{
+    background: #D53F8C;
+}
+
 /* Side Bar Menu */
 .sidenav a{
     padding: 10px 30px;

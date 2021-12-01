@@ -9,13 +9,12 @@
       "UnauthRoleName": "amplify-project-dev-13410-unauthRole",
       "StackName": "amplify-project-dev-13410",
       "StackId": "arn:aws:cloudformation:us-west-2:223681902151:stack/amplify-project-dev-13410/05fba8c0-49e5-11ec-8810-0644cb74d663",
-      "AmplifyAppId": "d5f1twmgpm4pl",
-      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-project-dev-13410-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+      "AmplifyAppId": "d5f1twmgpm4pl"
     },
     "categories": {
       "auth": {
-        "projectAuth": {},
-        "userPoolGroups": {}
+        "userPoolGroups": {},
+        "projectAuth": {}
       },
       "function": {
         "AdminQueries3f8e69fc": {

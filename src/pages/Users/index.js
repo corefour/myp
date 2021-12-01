@@ -9,17 +9,15 @@ import {
     Th,
     Button,
     useDisclosure,
-    Spinner
+    Spinner,
+    Td
 } from '@chakra-ui/react';
 import { listUsers } from "../../services/Users";
 import UserRow from "./components/userlist"
+import {useNavigate, Outlet} from 'react-router-dom';
 
-function User({ signOut, user }) {
-
-    const { isOpen, onOpen, onClose } = useDisclosure()
-
-    const initialRef = React.useRef()
-    const finalRef = React.useRef()
+function User() {
+    let navigate = useNavigate();
 
     const [userDetails, setUserDetails] = useState([])
 
@@ -31,7 +29,7 @@ function User({ signOut, user }) {
     return (
         <Box mt="40px" className="users">
             <Container maxW='container.xl'>
-                <Button onClick={onOpen} float="right" bgColor="pink.500" color="blue.50" mb="30px" _hover={{ bg: "pink.700" }}>Add User</Button>
+                <Button onClick={() => navigate('create')} float="right" bgColor="pink.500" color="blue.50" mb="30px" _hover={{ bg: "pink.700" }}>Add User</Button>
                 <Table variant='striped' colorScheme='gray'>
                     <Thead>
                         <Tr>
@@ -44,16 +42,17 @@ function User({ signOut, user }) {
                         </Tr>
                     </Thead>
                     <Tbody>
-                        {userDetails.length ? <UserRow userdetails={userDetails} /> : <Spinner
+                        {userDetails.length ? <UserRow userdetails={userDetails} /> : <Td><Spinner
                             thickness='4px'
                             speed='0.65s'
                             emptyColor='gray.200'
                             color='blue.500'
                             size='xl'
-                        />}
+                        /></Td>}
                     </Tbody>
                 </Table>
             </Container>
+            {/* <Outlet /> */}
         </Box>
     )
 }

@@ -10,6 +10,7 @@ import UserCreate from "./pages/Users/components/usercreate";
 import Company from "./pages/Company";
 import CompanyCreate from "./pages/Company/components/companycreate";
 
+import Products from "./pages/Products/index"
 
 const Router = () => (
     <Routes>
@@ -18,6 +19,9 @@ const Router = () => (
         <Route path='/users/create' exact element={<UserCreate />}/>
         <Route path='/company/*' element={<Company />} />
         <Route path='/company/create' exact element={<CompanyCreate />}/>
+        <Route path='/users/create' exact element={<UserCreate />} />
+
+        <Route path='/products' exact element={<Products />} />
         {/* Do not remove this route its for 404 */}
         <Route path="*" element={<Page404 />} />
     </Routes>

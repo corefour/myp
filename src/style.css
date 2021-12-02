@@ -92,6 +92,41 @@ a:hover{
     background: none;
 }
 
+/* Company Profile */
+.company-profile .banner{
+    height: 450px;
+    overflow: hidden;
+    box-shadow: var(--chakra-shadows-md);
+}
+.company-profile .banner .bannerImg{
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+.company-profile .company-title{
+    position: absolute;
+    left: 0%;
+    top: 40%;
+    transform: translate(0%, -50%);
+    width: 100%;
+    padding-left: 10%;
+}
+.company-profile .company-title img{
+    position: relative;
+    width: 280px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 60px;
+}
+.company-profile .company-title p{
+    display: inline-block;
+    font-size: 40px;
+    font-weight: 600;
+}
+.company-profile .tabs{
+    margin-top: 50px;
+}
+
 /* Product Page */
 .product{
     transition: all 0.4s;

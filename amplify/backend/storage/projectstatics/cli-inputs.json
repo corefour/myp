@@ -1,0 +1,33 @@
+{
+  "resourceName": "projectstatics",
+  "policyUUID": "078329ae",
+  "bucketName": "projectstaticsbucket",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "READ"
+  ],
+  "groupAccess": {
+    "Employees": [
+      "CREATE_AND_UPDATE",
+      "READ",
+      "DELETE"
+    ],
+    "Admins": [
+      "CREATE_AND_UPDATE",
+      "READ",
+      "DELETE"
+    ],
+    "Users": [
+      "CREATE_AND_UPDATE",
+      "READ",
+      "DELETE"
+    ],
+    "Sales": [
+      "READ"
+    ],
+    "Purchasers": [
+      "READ"
+    ]
+  }
+}

@@ -1,5 +1,5 @@
 import { API } from 'aws-amplify';
-import { createCompany } from './../../graphql/mutations';
+import { createCompany, updateCompany } from './../../graphql/mutations';
 import { listCompanys } from './../../graphql/queries';
 
 export async function addCompany(input = {}){
@@ -25,5 +25,14 @@ export async function allCompanys(){
     }
 }
 
+export async function editCompany(input = {}){
+    try{
+        return await API.graphql({
+            query: updateCompany,
+        })
+    } catch ({err}){
+        return err;
+    }
+}
 
 

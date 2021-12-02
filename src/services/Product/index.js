@@ -1,5 +1,5 @@
 import { API } from 'aws-amplify';
-import { createProduct } from './../../graphql/mutations';
+import { createProduct, updateProduct } from './../../graphql/mutations';
 import { listProducts } from './../../graphql/queries';
 
 export async function addProduct(input = {}){
@@ -25,5 +25,14 @@ export async function allProducts(){
     }
 }
 
+export async function editProduct(input = {}){
+    try{
+        return await API.graphql({
+            query: updateProduct,
+        })
+    } catch ({err}){
+        return err;
+    }
+}
 
 

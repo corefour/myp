@@ -11,7 +11,6 @@ import {
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
-import DatePicker from 'react-date-picker';
 
 function UserCreate(){
 

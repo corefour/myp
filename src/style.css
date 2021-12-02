@@ -19,6 +19,12 @@ a:hover{
     background: #D53F8C;
 }
 
+/* Top Bar */
+.profile p{
+    line-height: 35px;
+    margin-right: 20px
+}
+
 /* Side Bar Menu */
 .sidenav a{
     padding: 10px 30px;
@@ -67,6 +73,32 @@ a:hover{
     background: #718096;
     color: #EDF2F7;
     box-shadow: var(--chakra-shadows-lg);
+}
+
+/* Product Page */
+.product{
+    transition: all 0.4s;
+    margin-bottom: 40px;
+}
+.product .productList a{
+    background: #EDF2F7;
+    border-radius: 5px; 
+    transition: all 0.4s;
+}
+.product .productList a:hover{
+    background: #718096;
+    color: #EDF2F7;
+    box-shadow: var(--chakra-shadows-xl);
+}
+.product .productList a img{
+    max-height: 500px;
+    height: 100vh;
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.product .productList a img:hover{
+    box-shadow: var(--chakra-shadows-xl);
 }
 
 .chakra-button:focus{

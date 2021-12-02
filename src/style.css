@@ -129,6 +129,10 @@ a:hover{
 .company-profile .tabs{
     margin-top: 50px;
 }
+.company-profile .tabs .chakra-tabs button:focus{
+    outline: none;
+    box-shadow: none !important;
+}
 
 /* Product Page */
 .product{

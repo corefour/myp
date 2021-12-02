@@ -51,9 +51,8 @@ function TopBar(props) {
                         <DrawerContent py="50px" px="20px" className="sidenav">
                             <DrawerCloseButton />
                             <Link to="/dashboard">Dashboard</Link>
-                            <Link to="/users">Users</Link>
-                            <Link to="/company">Company</Link>
-                            <Link to="/products">Product</Link>
+                            <Link to="/users" bgColor="gray.700" color="gray.100" py="10px" px="30px" rounded="5" mb="20px" _hover={{ bg: "pink.600" }}>Users</Link>
+                            <Link to="/purchases">Purchase Management</Link>
                         </DrawerContent>
                     </Drawer>
                 </Box>

@@ -304,3 +304,24 @@ export const deleteCompany = /* GraphQL */ `
     }
   }
 `;
+
+export const createPurchase = /* GraphQL */ `
+  mutation CreatePurchases(
+    $input: CreatePurchaseInput!
+    $condition: ModelPurchaseConditionInput
+  ) {
+    createPurchase(input: $input, condition: $condition) {
+      id
+    companyID
+    createdAt
+    currentStatus
+    dateOfOrder
+    id
+    itemsOrdered
+    quantity
+    supplierDetails
+    totalCost
+    updatedAt
+    }
+  }
+`;

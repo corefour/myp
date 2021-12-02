@@ -11,22 +11,29 @@ import Company from "./pages/Company";
 import CompanyCreate from "./pages/Company/components/companycreate";
 // Product Page
 import Products from "./pages/Products/index"
-import CompanyProfile from "./pages/Company/components/companyprofile";
-import ProductCreate from "./pages/Products/components/productcreate";
-
+// Purchases Page
+import Purchases from "./pages/purchaseManagement";
+import CreatePurchase from "./pages/purchaseManagement/components/createPurchaseOrder";
+import CreateExpenditures from "./pages/purchaseManagement/components/createExpenditures";
+import GetExpenditures from "./pages/purchaseManagement/components/getExpenditures";
 const Router = () => (
     <Routes>
         <Route path='/' element={<Home />} />
 
         <Route path='/users/*' element={<Users />} />
-        <Route path='/users/create' exact element={<UserCreate />} />
+        <Route path='/users/create' exact element={<UserCreate />}/>
 
         <Route path='/company/*' element={<Company />} />
-        <Route path='/company/create' exact element={<CompanyCreate />} />
-        <Route path='/company/:id' exact element={<CompanyProfile />} />
+        <Route path='/company/create' exact element={<CompanyCreate />}/>
 
         <Route path='/products' exact element={<Products />} />
-        <Route path='/products/create' exact element={<ProductCreate />} />
+
+        <Route path='/purchases/' element={<Purchases/>} />
+        <Route path='/purchases/create' exact element={<CreatePurchase />}/>
+
+        <Route path='purchases/expenditures/' element={<CreateExpenditures />} />
+        <Route path='purchases/expendituresById/' element={<GetExpenditures />} />
+
         {/* Do not remove this route its for 404 */}
         <Route path="*" element={<Page404 />} />
     </Routes>

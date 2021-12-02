@@ -33,3 +33,13 @@ type Company @model @auth(rules: [{allow: public}]) {
   Expenditures: [Expenditure] @connection(keyName: "byCompany", fields: ["id"])
 }
  
+type Purchase @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  itemsOrdered: String!
+  quantity: Int!
+  dateOfOrder: String
+  supplierDetails: String!
+  totalCost: Int!
+  currentStatus: String
+  companyID: ID
+}

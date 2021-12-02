@@ -19,9 +19,9 @@ function Company() {
         <Box mt="40px" className="company">
             <Container maxW='container.xl'>
                 <Button onClick={() => navigate('create')} float="right" bgColor="pink.500" color="blue.50" mb="30px" _hover={{ bg: "pink.700" }}>Add Company</Button>
-                <Box className="clear">
-                    <Companylist companys={companys} />
-                </Box>
+                <Box className="clear"></Box>
+                <Companylist companys={companys} />
+                
 
             </Container>
             {/* <Outlet /> */}

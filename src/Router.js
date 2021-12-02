@@ -12,6 +12,7 @@ import CompanyCreate from "./pages/Company/components/companycreate";
 // Product Page
 import Products from "./pages/Products/index"
 import CompanyProfile from "./pages/Company/components/companyprofile";
+import ProductCreate from "./pages/Products/components/productcreate";
 
 const Router = () => (
     <Routes>
@@ -25,6 +26,7 @@ const Router = () => (
         <Route path='/company/:id' exact element={<CompanyProfile />} />
 
         <Route path='/products' exact element={<Products />} />
+        <Route path='/products/create' exact element={<ProductCreate />}/>
         {/* Do not remove this route its for 404 */}
         <Route path="*" element={<Page404 />} />
     </Routes>

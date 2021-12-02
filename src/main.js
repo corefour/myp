@@ -6,11 +6,9 @@ import awsconfig from "./aws-exports";
 import { ChakraProvider } from "@chakra-ui/react";
 import "./style.css";
 import Dashboard from "./pages/Dashboard/index";
-import { getCurrentUserJwtPayload } from "./services/user";
 
 Amplify.configure(awsconfig);
 
-getCurrentUserJwtPayload().then((res) => console.log(res));
 function Main({ signOut, user }) {
     
     return (

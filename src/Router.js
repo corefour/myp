@@ -15,11 +15,12 @@ import Products from "./pages/Products/index"
 const Router = () => (
     <Routes>
         <Route path='/' element={<Home />} />
+
         <Route path='/users/*' element={<Users />} />
         <Route path='/users/create' exact element={<UserCreate />}/>
+
         <Route path='/company/*' element={<Company />} />
         <Route path='/company/create' exact element={<CompanyCreate />}/>
-        <Route path='/users/create' exact element={<UserCreate />} />
 
         <Route path='/products' exact element={<Products />} />
         {/* Do not remove this route its for 404 */}

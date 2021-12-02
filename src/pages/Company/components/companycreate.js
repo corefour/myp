@@ -12,9 +12,10 @@ import {
 import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { addCompany } from "../../../services/Company"
+import { useNavigate, Outlet } from 'react-router-dom';
 
 function UserCreate() {
-
+    let navigate = useNavigate();
     const {
         handleSubmit,
         register,
@@ -63,8 +64,9 @@ function UserCreate() {
                             _hover={{ bg: "pink.700" }}
                             float="right"
                             isLoading={isSubmitting}
+                            onClick={() => navigate('create')}
                         >
-                            Submit
+                            Save
                         </Button>
                         <Box className="clear"></Box>
                     </form>

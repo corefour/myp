@@ -23,20 +23,18 @@ export async function allCompanys() {
     }
 }
 
-export async function editCompany(input = {}) {
+export async function editCompany(variables) {
     try {
         return await API.graphql({
             query: updateCompany,
-            variables: {
-                input: input
-            }
+            variables: variables
         })
     } catch ({ err }) {
         return err;
     }
 }
 
-export async function removeCompany(id){
+export async function removeCompany(id) {
     try {
         return await API.graphql({
             query: deleteCompany,

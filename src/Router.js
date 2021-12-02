@@ -19,14 +19,14 @@ const Router = () => (
         <Route path='/' element={<Home />} />
 
         <Route path='/users/*' element={<Users />} />
-        <Route path='/users/create' exact element={<UserCreate />}/>
+        <Route path='/users/create' exact element={<UserCreate />} />
 
         <Route path='/company/*' element={<Company />} />
-        <Route path='/company/create' exact element={<CompanyCreate />}/>
+        <Route path='/company/create' exact element={<CompanyCreate />} />
         <Route path='/company/:id' exact element={<CompanyProfile />} />
 
         <Route path='/products' exact element={<Products />} />
-        <Route path='/products/create' exact element={<ProductCreate />}/>
+        <Route path='/products/create' exact element={<ProductCreate />} />
         {/* Do not remove this route its for 404 */}
         <Route path="*" element={<Page404 />} />
     </Routes>

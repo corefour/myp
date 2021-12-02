@@ -9,7 +9,7 @@ import Companylist from "./components/listcompanys"
 import { allCompanys } from "../../services/Company";
 import { useNavigate, Outlet } from 'react-router-dom';
 
-function User() {
+function Company() {
     let navigate = useNavigate();
     const [companys, setCompanys] = useState([])
 
@@ -29,4 +29,4 @@ function User() {
     )
 }
 
-export default User
+export default Company

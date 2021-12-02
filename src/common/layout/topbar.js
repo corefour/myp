@@ -18,10 +18,9 @@ import {
 import { Link } from 'react-router-dom';
 import { FaBars, FaAngleDown, FaUserCircle } from 'react-icons/fa';
 import { Auth } from 'aws-amplify';
-
+import { connect } from "react-redux";
 
 function TopBar(props) {
-    console.log(props.userdata);
     const { isOpen, onOpen, onClose } = useDisclosure();
     const btnRef = React.useRef();
 
@@ -59,7 +58,7 @@ function TopBar(props) {
                 <Box float="right" className="profile">
                     <Menu>
                         <Flex>
-                            <Text>{props.userdata.name}</Text>
+                            <Text>{props.profile.name}</Text>
                             <MenuButton>
                                 <FaUserCircle color="pink.800" />
                             </MenuButton>
@@ -74,4 +73,7 @@ function TopBar(props) {
         </Box>
     )
 }
-export default TopBar
+
+const mapStateToProps = (state) => { return { profile: state.greduce.profile } }
+
+export default connect(mapStateToProps)(TopBar)

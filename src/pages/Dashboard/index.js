@@ -5,7 +5,7 @@ import { lastIndexOf, substr } from "@7urtle/lambda";
 import Router from "../../Router";
 import { Box } from "@chakra-ui/react";
 
-export default function Dashboard() {
+export default function Dashboard(props) {
     /**
    * Turns URL path into router basename by removing everything after the last slash
    * 
@@ -23,7 +23,7 @@ export default function Dashboard() {
     return (
         <Box>
             <HashRouter basename={getBasename(window.location.pathname)}>
-                <TopBar />
+                <TopBar userdata={props.userdata} />
                 <Router />
             </HashRouter>
         </Box>

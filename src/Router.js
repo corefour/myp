@@ -9,7 +9,7 @@ import UserCreate from "./pages/Users/components/usercreate";
 //Company Page
 import Company from "./pages/Company";
 import CompanyCreate from "./pages/Company/components/companycreate";
-
+// Product Page
 import Products from "./pages/Products/index"
 
 const Router = () => (

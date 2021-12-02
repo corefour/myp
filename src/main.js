@@ -12,7 +12,7 @@ Amplify.configure(awsconfig);
 function Main({ signOut, user }) {
     return (
         <ChakraProvider>
-            <Dashboard />
+            <Dashboard userdata={user.attributes} />
         </ChakraProvider>
     )
 }

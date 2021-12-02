@@ -12,27 +12,28 @@ import {
 import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import DatePicker from 'react-date-picker';
+import { addCompany } from "../../../services/Company"
 
-function UserCreate(){
+function UserCreate() {
 
     const {
         handleSubmit,
         register,
         formState: { errors, isSubmitting }
-      } = useForm();
-    
-      function onSubmit(values) {
+    } = useForm();
+
+    function onSubmit(values) {
         return new Promise((resolve) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            resolve();
-          }, 3000);
+            setTimeout(() => {
+                addCompany({ input: values }).catch((err) => console.log(err));
+                resolve();
+            }, 3000);
         });
-      }
+    }
 
-      const [value, onChange] = useState(new Date());
+    const [value, onChange] = useState(new Date());
 
-    return(
+    return (
         <Box>
             <Container maxW='container.xl' mt="30px">
                 <Link to="/company" className="btn-custom">Back</Link>
@@ -42,7 +43,7 @@ function UserCreate(){
                         <FormControl isInvalid={errors.name}>
                             <FormLabel htmlFor="name">Company Name</FormLabel>
                             <Input placeholder='Company Name' id="name"
-                            {...register("name", {required: "This is required"})} />
+                                {...register("name", { required: "This is required" })} />
                             <FormErrorMessage>
                                 {errors.name && errors.name.message}
                             </FormErrorMessage>
@@ -50,7 +51,7 @@ function UserCreate(){
                         <FormControl mt={4} isInvalid={errors.description}>
                             <FormLabel htmlFor="description">Company Description</FormLabel>
                             <Input placeholder='Company Description' id="description"
-                            {...register("description", {required: "This is required"})} />
+                                {...register("description", { required: "This is required" })} />
                             <FormErrorMessage>
                                 {errors.description && errors.description.message}
                             </FormErrorMessage>

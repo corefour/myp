@@ -1,14 +1,12 @@
 import { API } from 'aws-amplify';
-import { createCompany, updateCompany } from './../../graphql/mutations';
+import { createCompany, deleteCompany, updateCompany } from './../../graphql/mutations';
 import { listCompanys } from './../../graphql/queries';
 
-export async function addCompany(input = {}) {
+export async function addCompany(variables) {
     try {
         return await API.graphql({
             query: createCompany,
-            variables: {
-                input: input
-            }
+            variables: variables
         })
     } catch ({ err }) {
         return err;
@@ -25,12 +23,30 @@ export async function allCompanys() {
     }
 }
 
-export async function editCompany(input = {}){
-    try{
+export async function editCompany(input = {}) {
+    try {
         return await API.graphql({
             query: updateCompany,
+            variables: {
+                input: input
+            }
         })
-    } catch ({err}){
+    } catch ({ err }) {
+        return err;
+    }
+}
+
+export async function removeCompany(id){
+    try {
+        return await API.graphql({
+            query: deleteCompany,
+            variables: {
+                input: {
+                    id: id
+                }
+            }
+        })
+    } catch (err) {
         return err;
     }
 }

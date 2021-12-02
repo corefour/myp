@@ -49,7 +49,10 @@
     "hostedUI": false,
     "userPoolGroupList": [
       "Admins",
-      "Users"
+      "Users",
+      "Sales",
+      "Purchasers",
+      "Employees"
     ],
     "adminQueryGroup": "Admins",
     "serviceName": "Cognito",

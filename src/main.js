@@ -10,6 +10,7 @@ import { getCurrentUserJwtPayload } from "./services/user";
 
 Amplify.configure(awsconfig);
 
+getCurrentUserJwtPayload().then((res) => console.log(res));
 function Main({ signOut, user }) {
     
     return (

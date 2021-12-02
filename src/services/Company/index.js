@@ -2,7 +2,7 @@ import { API } from 'aws-amplify';
 import { createCompany, updateCompany } from './../../graphql/mutations';
 import { listCompanys } from './../../graphql/queries';
 
-export async function addCompany(input = {}){
+export async function addCompany(input = {}) {
     try {
         return await API.graphql({
             query: createCompany,
@@ -10,17 +10,17 @@ export async function addCompany(input = {}){
                 input: input
             }
         })
-    } catch ({err}) {
+    } catch ({ err }) {
         return err;
     }
 }
 
-export async function allCompanys(){
+export async function allCompanys() {
     try {
         return await API.graphql({
             query: listCompanys
         })
-    } catch ({err}){
+    } catch ({ err }) {
         return err;
     }
 }

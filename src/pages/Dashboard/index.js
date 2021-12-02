@@ -4,8 +4,11 @@ import { HashRouter } from "react-router-dom";
 import { lastIndexOf, substr } from "@7urtle/lambda";
 import Router from "../../Router";
 import { Box } from "@chakra-ui/react";
+import { connect } from "react-redux";
+import { set_userData } from "../../redux/dispatch/dispatch";
 
-export default function Dashboard() {
+function Dashboard(props) {
+    props.set_userData(props.userdata)
     /**
    * Turns URL path into router basename by removing everything after the last slash
    * 
@@ -29,3 +32,15 @@ export default function Dashboard() {
         </Box>
     )
 }
+
+const mapStateToProps = (state) => { return { profile: state.greduce.profile } }
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        set_userData: (options) => {
+            dispatch(set_userData(options))
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)

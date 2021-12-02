@@ -28,7 +28,6 @@ a:hover{
     margin-bottom: 20px;
     transition: all 0.4s;
 }
-
 .sidenav a:hover{
     background: #D53F8C;
 }
@@ -48,13 +47,26 @@ a:hover{
     padding: 5px 10px;
     border-radius: 5px;
 }
-
 .react-date-picker:hover{
     border-color: #cbd5e0;
 }
-
 .react-date-picker__wrapper{
     border: 0 !important;
+}
+
+/* Company Page */
+.company{
+    transition: all 0.4s;
+}
+.company .companyList a{
+    background: #EDF2F7;
+    border-radius: 5px; 
+    transition: all 0.4s;
+}
+.company .companyList a:hover{
+    background: #718096;
+    color: #EDF2F7;
+    box-shadow: var(--chakra-shadows-lg);
 }
 
 .chakra-button:focus{

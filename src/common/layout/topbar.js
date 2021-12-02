@@ -11,21 +11,23 @@ import {
     Menu,
     MenuButton,
     MenuItem,
-    MenuList
+    MenuList,
+    Text,
+    Flex
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { FaBars, FaAngleDown, FaUserCircle } from 'react-icons/fa';
 import { Auth } from 'aws-amplify';
+import { connect } from "react-redux";
 
-
-function TopBar() {
+function TopBar(props) {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const btnRef = React.useRef();
 
     async function signOut() {
         try {
-            await Auth.signOut().then(() =>{
-            window.location.reload(false);
+            await Auth.signOut().then(() => {
+                window.location.reload(false);
             });
         } catch (error) {
             console.log('error signing out: ', error);
@@ -49,15 +51,18 @@ function TopBar() {
                         <DrawerContent py="50px" px="20px" className="sidenav">
                             <DrawerCloseButton />
                             <Link to="/dashboard">Dashboard</Link>
-                            <Link to="/users" bgColor="gray.700" color="gray.100" py="10px" px="30px" rounded="5" mb="20px"_hover={{ bg: "pink.600" }}>Users</Link>
+                            <Link to="/users" bgColor="gray.700" color="gray.100" py="10px" px="30px" rounded="5" mb="20px" _hover={{ bg: "pink.600" }}>Users</Link>
                         </DrawerContent>
                     </Drawer>
                 </Box>
                 <Box float="right" className="profile">
                     <Menu>
-                        <MenuButton>
-                            <FaUserCircle color="pink.800" />
-                        </MenuButton>
+                        <Flex>
+                            <Text>{props.profile.name}</Text>
+                            <MenuButton>
+                                <FaUserCircle color="pink.800" />
+                            </MenuButton>
+                        </Flex>
                         <MenuList>
                             <MenuItem onClick={signOut}>Logout</MenuItem>
                         </MenuList>
@@ -68,4 +73,7 @@ function TopBar() {
         </Box>
     )
 }
-export default TopBar
+
+const mapStateToProps = (state) => { return { profile: state.greduce.profile } }
+
+export default connect(mapStateToProps)(TopBar)

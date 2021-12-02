@@ -35,45 +35,25 @@ function UserCreate(){
     return(
         <Box>
             <Container maxW='container.xl' mt="30px">
-                <Link to="/users" className="btn-custom">Back</Link>
+                <Link to="/company" className="btn-custom">Back</Link>
                 <Box className="form" boxSize="sm" mx="auto">
-                    <Text fontSize='3xl' mb="20px">Add a New User</Text>
+                    <Text fontSize='3xl' mb="20px">Add a New Company</Text>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <FormControl isInvalid={errors.name}>
-                            <FormLabel htmlFor="name">Full Name</FormLabel>
-                            <Input placeholder='Full Name' id="name"
+                            <FormLabel htmlFor="name">Company Name</FormLabel>
+                            <Input placeholder='Company Name' id="name"
                             {...register("name", {required: "This is required"})} />
                             <FormErrorMessage>
                                 {errors.name && errors.name.message}
                             </FormErrorMessage>
                         </FormControl>
-                        <FormControl mt={4} isInvalid={errors.password}>
-                            <FormLabel htmlFor="password">Password</FormLabel>
-                            <Input placeholder='Password' id="password"
-                            type="password"
-                            {...register("password", {required: "This is required"})} />
+                        <FormControl mt={4} isInvalid={errors.description}>
+                            <FormLabel htmlFor="description">Company Description</FormLabel>
+                            <Input placeholder='Company Description' id="description"
+                            {...register("description", {required: "This is required"})} />
                             <FormErrorMessage>
-                                {errors.password && errors.password.message}
+                                {errors.description && errors.description.message}
                             </FormErrorMessage>
-                        </FormControl>
-                        <FormControl mt={4} isInvalid={errors.email}>
-                            <FormLabel htmlFor="email">Email address</FormLabel>
-                            <Input type='email' placeholder="Email Address" id="email"
-                            {...register("email", {required: "This is required"})} />
-                            <FormErrorMessage>
-                                {errors.email && errors.email.message}
-                            </FormErrorMessage>
-                        </FormControl>
-                        <FormControl mt={4} isInvalid={errors.dob}>
-                            <FormLabel htmlFor="dob">Date of Birth</FormLabel>
-                            <DatePicker
-                                onChange={onChange}
-                                value={value}
-                                id="dob"
-                            />
-                            {/* <FormErrorMessage>
-                                {errors.dob && errors.dob.message}
-                            </FormErrorMessage> */}
                         </FormControl>
                         <Button
                             mt={4}

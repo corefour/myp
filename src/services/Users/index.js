@@ -70,3 +70,40 @@ export async function enableUser(username) {
   const { ...rest } = await API.get(apiName, path, myInit);
   return rest;
 }
+
+export async function addUserToGroup(username, groupname){
+  let apiName = 'AdminQueries';
+  let path = '/addUserToGroup';
+  let myInit = {
+    queryStringParameters: {
+      "username": username,
+      "groupname": groupname
+    },
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `${(await Auth.currentSession()).getAccessToken().getJwtToken()}`
+    }
+  }
+
+  const { ...rest } = await API.get(apiName, path, myInit);
+  return rest;
+}
+
+export async function listGroups(limit){
+  let apiName = 'AdminQueries';
+  let path = '/listGroups';
+  let nextToken;
+  let myInit = {
+    queryStringParameters: {
+      "limit": limit,
+      "token": nextToken
+    },
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `${(await Auth.currentSession()).getAccessToken().getJwtToken()}`
+    }
+  }
+
+  const { ...rest } = await API.get(apiName, path, myInit);
+  return rest;
+}

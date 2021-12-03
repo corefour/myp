@@ -1,5 +1,5 @@
-import React from 'react';
-import { 
+import React, { useState, useEffect } from 'react';
+import {
     Tabs,
     TabList,
     TabPanels,
@@ -12,8 +12,18 @@ import {
 } from '@chakra-ui/react';
 import logo from "../../../assets/company-logo.png";
 import bg from "../../../assets/bg.jpg";
+// import Products from "../../Products"
+import { useParams } from 'react-router-dom';
+import { singleCompany } from "../../../services/Company"
 
-export default function CompanyProfile(){
+function CompanyProfile() {
+    let { id } = useParams();
+
+    const [val, setVal] = useState({ name: "", description: "", image: "" })
+
+    useEffect(() => {
+        singleCompany(id).then((res) => setVal(res.data.getCompany))
+    }, [])
 
     return (
         <Box className="company-profile">
@@ -22,7 +32,7 @@ export default function CompanyProfile(){
                 <Container maxW='container.xl'>
                     <Box className="company-title">
                         <Image src={logo} alt="Company Logo" />
-                        <Text>Company Name</Text>
+                        <Text>{val.name}</Text>
                     </Box>
                 </Container>
             </Box>
@@ -36,13 +46,14 @@ export default function CompanyProfile(){
                         </TabList>
                         <TabPanels>
                             <TabPanel>
-                            <p>one!</p>
+                                {/* <Products /> */}
+                                one
                             </TabPanel>
                             <TabPanel>
-                            <p>two!</p>
+                                <p>two!</p>
                             </TabPanel>
                             <TabPanel>
-                            <p>three!</p>
+                                <p>three!</p>
                             </TabPanel>
                         </TabPanels>
                     </Tabs>
@@ -51,3 +62,5 @@ export default function CompanyProfile(){
         </Box>
     )
 }
+
+export default CompanyProfile

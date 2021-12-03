@@ -7,7 +7,6 @@ import { ChakraProvider } from "@chakra-ui/react";
 import "./style.css";
 import Dashboard from "./pages/Dashboard/index";
 
-
 Amplify.configure(awsconfig);
 
 function Main({ signOut, user }) {

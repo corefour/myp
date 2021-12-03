@@ -34,7 +34,7 @@ export async function editProduct(variables) {
     }
 }
 
-export async function removeProduct(id){
+export async function removeProduct(id) {
 
     try {
         return await API.graphql({
@@ -50,15 +50,11 @@ export async function removeProduct(id){
     }
 }
 
-export async function singleProduct(id){
+export async function singleProduct(id) {
     try {
         return await API.graphql({
             query: getProduct,
-            variables: {
-                input: {
-                    id:id
-                }
-            }
+            variables: { id: id }
         })
     } catch (err) {
         return err;

@@ -13,7 +13,7 @@ import CompanyProfile from "./pages/Company/components/companyprofile";
 // Product Page
 import Products from "./pages/Products/index";
 import ProductCreate from "./pages/Products/components/productcreate";
-// import ProductEdit from "./pages/Products/components/productedit";
+import ProductEdit from "./pages/Products/components/productedit";
 // Pruchase Page
 import Purchase from "./pages/Purchase/index";
 
@@ -30,7 +30,7 @@ const Router = () => (
 
         <Route path='/products' exact element={<Products />} />
         <Route path='/product/create' exact element={<ProductCreate />} />
-        {/* <Route path='/product/edit' exact element={<ProductEdit />} /> */}
+        <Route path='/product/edit/:id' exact element={<ProductEdit />} />
 
         <Route path='/purchase' exact element={<Purchase />} />
         {/* Do not remove this route its for 404 */}

@@ -6,8 +6,10 @@ import Router from "../../Router";
 import { Box } from "@chakra-ui/react";
 import { connect } from "react-redux";
 import { set_userData } from "../../redux/dispatch/dispatch";
+// import { getCurrentUserJwtPayload } from "../../services/user";
 
 function Dashboard(props) {
+    // getCurrentUserJwtPayload().then((res) => console.log(res));
     props.set_userData(props.userdata)
     /**
    * Turns URL path into router basename by removing everything after the last slash

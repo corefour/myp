@@ -166,6 +166,42 @@ a:hover{
 .product .productList a img:hover{
     box-shadow: var(--chakra-shadows-xl);
 }
+.product .indiProduct{
+    position: relative;
+    background: #000;
+    border-radius: 5px;
+    transition: all 0.4s;
+}
+.product .indiProduct p{
+    background: #EDF2F7;
+    color: #1a202c;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    transition: all 0.4s;
+}
+.product .indiProduct:hover p{
+    background: #718096;
+    color: #fff;
+}
+.product .indiProduct .deleteIcon{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 9;
+    transform: translate(-50%, -50%);
+    display: none;  
+    transition: all 0.4s;
+}
+.product .indiProduct:hover .deleteIcon{
+    display: block;
+}
+
+.product .indiProduct img{
+    transition: all 0.4s;
+}
+.product .indiProduct:hover img{
+    opacity: 0.5;
+}
 
 /* Purchase Page */
 .purchase .btn-add span{

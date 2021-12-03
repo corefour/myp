@@ -9,13 +9,13 @@ import {
 import { Link } from 'react-router-dom';
 import pic1 from "../../../assets/pic1.jpg";
 import { FaRegTrashAlt, FaPen } from 'react-icons/fa';
-import { remomveProduct } from "../../../services/Product"
+import { removeProduct } from "../../../services/Product"
 
 
 function Productlist(props) {
 
     function deleteProduct(id, index) {
-        remomveProduct(id)
+        removeProduct(id)
         let temp = [...props.products]
         temp.splice(index, 1)
         props.setProducts(temp)
@@ -31,8 +31,8 @@ function Productlist(props) {
                 props.products.map((item, index) => (
                     <Box className="indiCompany">
                         <Button className="deleteIcon" onClick={() => deleteProduct(item.id, index)}><FaRegTrashAlt /></Button>
-                        {/* <Button className="deleteIcon" onClick={() => deleteProduct(item.id, index)}><FaPen /></Button> */}
-                        <Link to="/">
+                        {/* <Button className="deleteIcon" onClick={() => editProduct(item.id, index)}><FaPen /></Button> */}
+                        <Link to={"/product/edit/" + item.id}>
                             <Image src={["", 0, false, NaN, null, undefined].includes(item.image) ? pic1 : item.image} alt="" />
                             <Text>{item.name}</Text>
                         </Link>
@@ -43,4 +43,4 @@ function Productlist(props) {
     )
 }
 
-export default Productlist
+export default Productlist  

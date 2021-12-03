@@ -30,7 +30,7 @@ const Router = () => (
 
         <Route path='/products' exact element={<Products />} />
         <Route path='/product/create' exact element={<ProductCreate />} />
-        <Route path='/product/edit' exact element={<ProductEdit />} />
+        <Route path='/product/edit/:id' exact element={<ProductEdit />} />
 
         <Route path='/purchase' exact element={<Purchase />} />
         {/* Do not remove this route its for 404 */}

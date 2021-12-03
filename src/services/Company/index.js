@@ -49,15 +49,11 @@ export async function removeCompany(id) {
     }
 }
 
-export async function singleCompany(id){
+export async function singleCompany(id) {
     try {
         return await API.graphql({
             query: getCompany,
-            variables: {
-                input: {
-                    id:id
-                }
-            }
+            variables: { id: id }
         })
     } catch (err) {
         return err;

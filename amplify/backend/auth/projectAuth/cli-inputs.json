@@ -45,7 +45,11 @@
     ],
     "userPoolGroups": false,
     "adminQueries": true,
-    "triggers": {},
+    "triggers": {
+      "PostConfirmation": [
+        "custom"
+      ]
+    },
     "hostedUI": false,
     "userPoolGroupList": [
       "Admins",
@@ -71,11 +75,22 @@
       ]
     },
     "breakCircularDependency": true,
-    "dependsOn": [],
+    "dependsOn": [
+      {
+        "category": "function",
+        "resourceName": "projectAuthPostConfirmation",
+        "triggerProvider": "Cognito",
+        "attributes": [
+          "Arn",
+          "Name"
+        ]
+      }
+    ],
     "permissions": [],
     "authProviders": [],
     "parentStack": {
       "Ref": "AWS::StackId"
-    }
+    },
+    "authTriggerConnections": "[\n  {\n    \"triggerType\": \"PostConfirmation\",\n    \"lambdaFunctionName\": \"projectAuthPostConfirmation\"\n  }\n]"
   }
 }

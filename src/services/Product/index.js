@@ -1,6 +1,6 @@
 import { API } from 'aws-amplify';
 import { createProduct, deleteProduct, updateProduct } from './../../graphql/mutations';
-import { listProducts } from './../../graphql/queries';
+import { getProduct, listProducts } from './../../graphql/queries';
 
 export async function addProduct(variables) {
     try {
@@ -34,7 +34,7 @@ export async function editProduct(variables){
     }
 }
 
-export async function remomveProduct(id){
+export async function removeProduct(id){
 
     try {
         return await API.graphql({
@@ -42,6 +42,21 @@ export async function remomveProduct(id){
             variables: {
                 input: {
                     id: id
+                }
+            }
+        })
+    } catch (err) {
+        return err;
+    }
+}
+
+export async function singleProduct(id){
+    try {
+        return await API.graphql({
+            query: getProduct,
+            variables: {
+                input: {
+                    id:id
                 }
             }
         })

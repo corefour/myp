@@ -34,11 +34,11 @@ export type AmplifyDependentResourcesAttributes = {
             "Arn": "string",
             "Region": "string",
             "LambdaExecutionRole": "string"
-        }
-    },
-    "storage": {
-        "projectstatics": {
-            "BucketName": "string",
+        },
+        "projectAuthPostConfirmation": {
+            "Name": "string",
+            "Arn": "string",
+            "LambdaExecutionRole": "string",
             "Region": "string"
         }
     }

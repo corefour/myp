@@ -12,8 +12,7 @@ Amplify.configure(awsconfig);
 
 function Main({ signOut, user }) {
     
-    getCurrentUserRole().then((res) => console.log(res));
-
+    getCurrentUserJwtPayload().then((res) => console.log(res))
     return (
         <ChakraProvider>
             <Dashboard userdata={user.attributes} />

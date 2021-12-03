@@ -21,7 +21,7 @@ function Products() {
 
     return (
         <>
-            <Box mt="40px" className="product">
+            <Box my="40px" className="product">
                 <Container maxW='container.xl'>
                     <Button onClick={() => navigate('create')} float="right" bgColor="pink.500" color="blue.50" mb="30px" _hover={{ bg: "pink.700" }}>Add Product</Button>
                     <Box className="clear"></Box>

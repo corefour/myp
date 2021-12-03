@@ -37,40 +37,45 @@ function TopBar(props) {
     return (
         <Box bgColor="blue.50" py="15">
             <Container maxW='container.xl'>
-                <Box float="left">
-                    <Button ref={btnRef} bgColor="gray.700" color="gray.100" _hover={{ bg: "pink.600" }} onClick={onOpen}>
-                        <FaBars />
-                    </Button>
-                    <Drawer
-                        isOpen={isOpen}
-                        placement='left'
-                        onClose={onClose}
-                        finalFocusRef={btnRef}
-                    >
-                        <DrawerOverlay />
-                        <DrawerContent py="50px" px="20px" className="sidenav">
-                            <DrawerCloseButton />
-                            <Link to="/dashboard">Dashboard</Link>
-                            <Link to="/users">Users</Link>
-                            <Link to="/company">Company</Link>
-                            <Link to="/products">Product</Link>
-                        </DrawerContent>
-                    </Drawer>
+                <Box textAlign="center">
+                    <Box float="left">
+                        <Button ref={btnRef} bgColor="gray.700" color="gray.100" _hover={{ bg: "pink.600" }} onClick={onOpen}>
+                            <FaBars />
+                        </Button>
+                        <Drawer
+                            isOpen={isOpen}
+                            placement='left'
+                            onClose={onClose}
+                            finalFocusRef={btnRef}
+                        >
+                            <DrawerOverlay />
+                            <DrawerContent py="50px" px="20px" className="sidenav">
+                                <DrawerCloseButton />
+                                {/* <Link to="/dashboard">Dashboard</Link> */}
+                                <Link to="/users">Users</Link>
+                                <Link to="/company">Company</Link>
+                                <Link to="/products">Product</Link>
+                            </DrawerContent>
+                        </Drawer>
+                    </Box>
+                    <Box float="right" className="profile">
+                        <Menu>
+                            <Flex>
+                                <Text>{props.profile.name}</Text>
+                                <MenuButton>
+                                    <FaUserCircle color="pink.800" />
+                                </MenuButton>
+                            </Flex>
+                            <MenuList>
+                                <MenuItem onClick={signOut}>Logout</MenuItem>
+                            </MenuList>
+                        </Menu>
+                    </Box>
+                    <Text fontSize={30} w="50%" m="auto">
+                        <Link to="/">Mind your Product</Link>
+                    </Text>
+                    <div className="clear"></div>
                 </Box>
-                <Box float="right" className="profile">
-                    <Menu>
-                        <Flex>
-                            <Text>{props.profile.name}</Text>
-                            <MenuButton>
-                                <FaUserCircle color="pink.800" />
-                            </MenuButton>
-                        </Flex>
-                        <MenuList>
-                            <MenuItem onClick={signOut}>Logout</MenuItem>
-                        </MenuList>
-                    </Menu>
-                </Box>
-                <div className="clear"></div>
             </Container>
         </Box>
     )

@@ -29,8 +29,8 @@ const Router = () => (
         <Route path='/company/:id' exact element={<CompanyProfile />} />
 
         <Route path='/products' exact element={<Products />} />
-        <Route path='/product/create' exact element={<ProductCreate />} />
-        <Route path='/product/edit/:id' exact element={<ProductEdit />} />
+        <Route path='/products/create' exact element={<ProductCreate />} />
+        <Route path='/products/edit/:id' exact element={<ProductEdit />} />
 
         <Route path='/purchase' exact element={<Purchase />} />
         {/* Do not remove this route its for 404 */}

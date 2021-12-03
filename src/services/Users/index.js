@@ -50,8 +50,7 @@ export async function disableUser(username) {
     }
   }
 
-  const { ...rest } = await API.get(apiName, path, myInit);
-  return rest;
+  return await API.post(apiName, path, myInit);
 }
 
 export async function enableUser(username) {
@@ -60,6 +59,41 @@ export async function enableUser(username) {
   let myInit = {
     queryStringParameters: {
       "username": username
+    },
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `${(await Auth.currentSession()).getAccessToken().getJwtToken()}`
+    }
+  }
+
+  return await API.post(apiName, path, myInit);
+}
+
+export async function addUserToGroup(username, groupname){
+  let apiName = 'AdminQueries';
+  let path = '/addUserToGroup';
+  let myInit = {
+    queryStringParameters: {
+      "username": username,
+      "groupname": groupname
+    },
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `${(await Auth.currentSession()).getAccessToken().getJwtToken()}`
+    }
+  }
+
+  return await API.post(apiName, path, myInit);
+}
+
+export async function listGroups(limit){
+  let apiName = 'AdminQueries';
+  let path = '/listGroups';
+  let nextToken;
+  let myInit = {
+    queryStringParameters: {
+      "limit": limit,
+      "token": nextToken
     },
     headers: {
       'Content-Type': 'application/json',

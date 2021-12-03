@@ -27,7 +27,7 @@ function User() {
 
 
     return (
-        <Box mt="40px" className="users">
+        <Box my="40px" className="users">
             <Container maxW='container.xl'>
                 <Button onClick={() => navigate('create')} float="right" bgColor="pink.500" color="blue.50" mb="30px" _hover={{ bg: "pink.700" }}>Add User</Button>
                 <Table variant='striped' colorScheme='gray'>

@@ -26,7 +26,7 @@ function User() {
     const [userDetails, setUserDetails] = useState([])
 
     return (
-        <Box mt="40px" className="purchase">
+        <Box my="40px" className="purchase">
             <Container maxW='container.xl'>
                 <Table variant='striped' colorScheme='gray'>
                     <Thead>

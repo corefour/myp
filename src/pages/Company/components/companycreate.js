@@ -25,7 +25,9 @@ function UserCreate() {
     function onSubmit(values) {
         return new Promise((resolve) => {
             setTimeout(() => {
-                addCompany({ input: values }).catch((err) => console.log(err));
+                addCompany({ input: values }).then(() => {
+                    navigate('/company')
+                }).catch((err) => console.log(err));
                 resolve();
             }, 3000);
         });

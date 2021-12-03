@@ -12,8 +12,10 @@ import {
 import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { addProduct } from "../../../services/Product"
+import { useNavigate, Outlet } from "react-router-dom"
 
 function ProductCreate() {
+    let navigate = useNavigate();
     const {
         handleSubmit,
         register,
@@ -23,7 +25,9 @@ function ProductCreate() {
     function onSubmit(values) {
         return new Promise((resolve) => {
             setTimeout(() => {
-                addProduct({ input: values });
+                addProduct({ input: values }).then(() => {
+                    navigate('/products')
+                }).catch((err) => console.log(err));
                 resolve();
             }, 3000);
         });

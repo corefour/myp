@@ -50,7 +50,7 @@ export async function disableUser(username) {
     }
   }
 
-  const { ...rest } = await API.get(apiName, path, myInit);
+  const { ...rest } = await API.post(apiName, path, myInit);
   return rest;
 }
 
@@ -67,7 +67,7 @@ export async function enableUser(username) {
     }
   }
 
-  const { ...rest } = await API.get(apiName, path, myInit);
+  const { ...rest } = await API.post(apiName, path, myInit);
   return rest;
 }
 
@@ -85,7 +85,7 @@ export async function addUserToGroup(username, groupname){
     }
   }
 
-  const { ...rest } = await API.get(apiName, path, myInit);
+  const { ...rest } = await API.post(apiName, path, myInit);
   return rest;
 }
 

@@ -24,7 +24,13 @@
         },
         "projectAuthPostConfirmation": {
           "deploymentBucketName": "amplify-project-dev-13410-deployment",
-          "s3Key": "amplify-builds/projectAuthPostConfirmation-2f3256617054415a6848-build.zip"
+          "s3Key": "amplify-builds/projectAuthPostConfirmation-672f6859725634385a43-build.zip"
+        }
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d5f1twmgpm4pl",
+          "type": "cicd"
         }
       }
     }

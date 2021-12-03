@@ -9,13 +9,13 @@ import {
 import { Link } from 'react-router-dom';
 import pic1 from "../../../assets/pic1.jpg";
 import { FaRegTrashAlt, FaPen } from 'react-icons/fa';
-import { remomveProduct } from "../../../services/Product"
+import { removeProduct } from "../../../services/Product"
 
 
 function Productlist(props) {
 
     function deleteProduct(id, index) {
-        remomveProduct(id)
+        removeProduct(id)
         let temp = [...props.products]
         temp.splice(index, 1)
         props.setProducts(temp)

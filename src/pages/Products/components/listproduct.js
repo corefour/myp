@@ -29,7 +29,7 @@ function Productlist(props) {
         <Grid templateColumns='repeat(3, 1fr)' gap={30} textAlign="center" lineHeight="50px" fontSize="18" className="productList">
             {
                 props.products.map((item, index) => (
-                    <Box className="indiCompany">
+                    <Box className="indiProduct">
                         <Button className="deleteIcon" onClick={() => deleteProduct(item.id, index)}><FaRegTrashAlt /></Button>
                         {/* <Button className="deleteIcon" onClick={() => editProduct(item.id, index)}><FaPen /></Button> */}
                         <Link to={"/product/edit/" + item.id}>

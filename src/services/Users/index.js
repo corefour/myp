@@ -41,7 +41,7 @@ export async function disableUser(username) {
   let apiName = 'AdminQueries';
   let path = '/disableUser';
   let myInit = {
-    queryStringParameters: {
+    body: {
       "username": username
     },
     headers: {
@@ -57,7 +57,7 @@ export async function enableUser(username) {
   let apiName = 'AdminQueries';
   let path = '/enableUser';
   let myInit = {
-    queryStringParameters: {
+    body: {
       "username": username
     },
     headers: {
@@ -73,7 +73,7 @@ export async function addUserToGroup(username, groupname){
   let apiName = 'AdminQueries';
   let path = '/addUserToGroup';
   let myInit = {
-    queryStringParameters: {
+    body: {
       "username": username,
       "groupname": groupname
     },

@@ -3272,7 +3272,7 @@
   dependencies:
     "@chakra-ui/utils" "1.9.1"
 
-"@chakra-ui/counter@1.2.1":
+"@chakra-ui/counter@1.2.1", "@chakra-ui/counter@^1.2.1":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@chakra-ui/counter/-/counter-1.2.1.tgz#36d4683472751b9ce866d6d86f3856d032194468"
   integrity sha512-Gm4njMzEsDyAzdQtExn40TvmupzkPBrT5DiCu0DlxYqpLqCfqV49HgJHEG5oW3WV+WaC9mzg7VV+idKYh/d+Gg==

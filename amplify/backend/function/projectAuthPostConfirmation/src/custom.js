@@ -4,7 +4,6 @@ var ddb = new aws.DynamoDB()
 exports.handler = async (event, context) => {
   
   let date = new Date();
-  console.log(event);
   if (event.request.userAttributes.sub){
     console.log(event.request.userAttributes);
     let params = {
@@ -27,7 +26,7 @@ exports.handler = async (event, context) => {
       console.log(error)
       return error;
     }
-    context.done(null, event)
+    
   } else {
     console.log("Error: Nothing was written to DynamoDB");
     context.done(null, event);

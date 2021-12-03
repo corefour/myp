@@ -1,4 +1,4 @@
-import { API } from 'aws-amplify';
+import { API, Storage } from 'aws-amplify';
 import { createProduct, deleteProduct, updateProduct } from './../../graphql/mutations';
 import { getProduct, listProducts } from './../../graphql/queries';
 

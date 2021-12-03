@@ -40,6 +40,7 @@ function ProductEdit() {
     } = useForm({ mode: 'onBlur' });
 
     function onSubmit(values) {
+        values["id"] = id
         return new Promise((resolve) => {
             setTimeout(() => {
                 editProduct({ input: values }).then(() => {

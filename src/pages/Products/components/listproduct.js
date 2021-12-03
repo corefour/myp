@@ -32,7 +32,7 @@ function Productlist(props) {
                     <Box className="indiProduct">
                         <Button className="deleteIcon" onClick={() => deleteProduct(item.id, index)}><FaRegTrashAlt /></Button>
                         {/* <Button className="deleteIcon" onClick={() => editProduct(item.id, index)}><FaPen /></Button> */}
-                        <Link to={"/product/edit/" + item.id}>
+                        <Link to={"/products/edit/" + item.id}>
                             <Image src={["", 0, false, NaN, null, undefined].includes(item.image) ? pic1 : item.image} alt="" />
                             <Text>{item.name}</Text>
                         </Link>

@@ -19,8 +19,6 @@ function Products() {
 
     useEffect(() => { allProducts().then((res) => setProducts(res.data.listProducts.items)) }, [])
 
-    allProducts().then((res) => console.log(res))
-
     return (
         <>
             <Box mt="40px" className="product">

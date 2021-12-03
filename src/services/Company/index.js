@@ -34,7 +34,7 @@ export async function editCompany(variables) {
     }
 }
 
-export async function removeCompany(id){
+export async function removeCompany(id) {
     try {
         return await API.graphql({
             query: deleteCompany,

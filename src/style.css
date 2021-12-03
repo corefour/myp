@@ -5,7 +5,6 @@
 a:hover{
     text-decoration: none !important;
 }
-
 .btn-custom{
     padding: 10px 30px;
     background: #2D3748;
@@ -14,9 +13,17 @@ a:hover{
     display: inline-block;
     transition: all 0.4s;
 }
-
 .btn-custom:hover{
     background: #D53F8C;
+}
+.chakra-button:focus{
+    box-shadow: none !important;
+}
+
+.profile .chakra-menu__menu-button span{
+    font-size: 30px;
+    margin: 5px 0 0;
+    color: #B83280
 }
 
 /* Top Bar */
@@ -64,18 +71,21 @@ a:hover{
 .company{
     transition: all 0.4s;
 }
-.company .companyList a{
+.company .indiCompany{
     background: #EDF2F7;
     border-radius: 5px; 
     transition: all 0.4s;
     position: relative;
 }
-.company .companyList a:hover{
+.company .indiCompany:hover{
     background: #718096;
     color: #EDF2F7;
     box-shadow: var(--chakra-shadows-lg);
 }
-.company .companyList .deleteIcon{
+.company .indiCompany{
+    position: relative;
+}
+.company .indiCompany .deleteIcon{
     position: absolute;
     top: 10px;
     right: 10px;
@@ -84,12 +94,51 @@ a:hover{
     border: 0;
     z-index: 1;
 }
-.company .companyList a:hover .deleteIcon{
+.company .indiCompany:hover .deleteIcon{
     display: block;
     color: #EDF2F7;
 }
-.company .companyList a:hover .deleteIcon:hover{
+.company .indiCompany:hover .deleteIcon:hover{
     background: none;
+}
+
+/* Company Profile */
+.company-profile .banner{
+    height: 450px;
+    overflow: hidden;
+    box-shadow: var(--chakra-shadows-md);
+}
+.company-profile .banner .bannerImg{
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+.company-profile .company-title{
+    position: absolute;
+    left: 0%;
+    top: 40%;
+    transform: translate(0%, -50%);
+    width: 100%;
+    padding-left: 10%;
+}
+.company-profile .company-title img{
+    position: relative;
+    width: 280px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 60px;
+}
+.company-profile .company-title p{
+    display: inline-block;
+    font-size: 40px;
+    font-weight: 600;
+}
+.company-profile .tabs{
+    margin-top: 50px;
+}
+.company-profile .tabs .chakra-tabs button:focus{
+    outline: none;
+    box-shadow: none !important;
 }
 
 /* Product Page */
@@ -118,12 +167,17 @@ a:hover{
     box-shadow: var(--chakra-shadows-xl);
 }
 
-.chakra-button:focus{
-    box-shadow: none !important;
+/* Purchase Page */
+.purchase .btn-add span{
+    font-size: 30px;
+    display: inline-block;
+    line-height: 40px;
+}
+.purchase .btn-add span:first-child{
+    margin-right: 10px;
+}
+.purchase .btn-add span:last-child{
+    margin-left: 10px;
 }
 
-.profile .chakra-menu__menu-button span{
-    font-size: 30px;
-    margin: 5px 0 0;
-    color: #B83280
-}
+

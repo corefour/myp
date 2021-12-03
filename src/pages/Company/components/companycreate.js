@@ -12,9 +12,10 @@ import {
 import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { addCompany } from "../../../services/Company"
+import { useNavigate, Outlet } from 'react-router-dom';
 
 function UserCreate() {
-
+    let navigate = useNavigate();
     const {
         handleSubmit,
         register,
@@ -24,7 +25,9 @@ function UserCreate() {
     function onSubmit(values) {
         return new Promise((resolve) => {
             setTimeout(() => {
-                addCompany({ input: values }).catch((err) => console.log(err));
+                addCompany({ input: values }).then(() => {
+                    navigate('/company')
+                }).catch((err) => console.log(err));
                 resolve();
             }, 3000);
         });
@@ -64,7 +67,7 @@ function UserCreate() {
                             float="right"
                             isLoading={isSubmitting}
                         >
-                            Submit
+                            Save
                         </Button>
                         <Box className="clear"></Box>
                     </form>

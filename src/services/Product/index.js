@@ -23,13 +23,13 @@ export async function allProducts() {
     }
 }
 
-export async function editProduct(variables){
-    try{
+export async function editProduct(variables) {
+    try {
         return await API.graphql({
             query: updateProduct,
             variables: variables,
         })
-    } catch ({err}){
+    } catch ({ err }) {
         return err;
     }
 }

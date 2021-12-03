@@ -19,15 +19,13 @@ function Products() {
 
     useEffect(() => { allProducts().then((res) => setProducts(res.data.listProducts.items)) }, [])
 
-    allProducts().then((res) => console.log(res))
-
     return (
         <>
             <Box mt="40px" className="product">
                 <Container maxW='container.xl'>
                     <Button onClick={() => navigate('create')} float="right" bgColor="pink.500" color="blue.50" mb="30px" _hover={{ bg: "pink.700" }}>Add Product</Button>
                     <Box className="clear"></Box>
-                    <Productlist products={products} />
+                    <Productlist products={products} setProducts={setProducts} />
                 </Container>
                 {/* <Outlet /> */}
             </Box>

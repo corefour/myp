@@ -14,7 +14,7 @@ import {
 } from '@chakra-ui/react';
 import { listUsers } from "../../services/Users";
 import UserRow from "./components/userlist"
-import {useNavigate, Outlet} from 'react-router-dom';
+import { useNavigate, Outlet } from 'react-router-dom';
 
 function User() {
     let navigate = useNavigate();
@@ -42,7 +42,7 @@ function User() {
                         </Tr>
                     </Thead>
                     <Tbody>
-                        {userDetails.length ? <UserRow userdetails={userDetails} /> : <Td><Spinner
+                        {userDetails.length ? <UserRow userdetails={userDetails} setUserDetails={setUserDetails} /> : <Td><Spinner
                             thickness='4px'
                             speed='0.65s'
                             emptyColor='gray.200'

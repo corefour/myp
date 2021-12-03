@@ -69,7 +69,7 @@ export async function enableUser(username) {
   return await API.post(apiName, path, myInit);
 }
 
-export async function addUserToGroup(username, groupname){
+export async function addUserToGroup(username, groupname) {
   let apiName = 'AdminQueries';
   let path = '/addUserToGroup';
   let myInit = {
@@ -86,7 +86,7 @@ export async function addUserToGroup(username, groupname){
   return await API.post(apiName, path, myInit);
 }
 
-export async function listGroups(limit){
+export async function listGroups(limit) {
   let apiName = 'AdminQueries';
   let path = '/listGroups';
   let nextToken;

@@ -12,7 +12,7 @@ Amplify.configure(awsconfig);
 
 function Main({ signOut, user }) {
 
-    enableUser("e1242509-3a23-4bdb-9489-56cd5520cf1f").then((res) => console.log(res)).catch((res)=> console.log(res))
+    // enableUser("e1242509-3a23-4bdb-9489-56cd5520cf1f").then((res) => console.log(res)).catch((res)=> console.log(res))
     return (
         <ChakraProvider>
             <Dashboard userdata={user.attributes} />

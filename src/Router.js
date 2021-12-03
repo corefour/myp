@@ -27,7 +27,6 @@ const Router = () => {
         getCurrentUserRole().then((res) => setRole(res))
     }, [])
 
-
     return (
         <Routes>
             <Route path='/' element={<Home />} />
@@ -42,8 +41,8 @@ const Router = () => {
             </>}
 
             <Route path='/products' exact element={<Products />} />
-            <Route path='/product/create' exact element={<ProductCreate />} />
-            <Route path='/product/edit/:id' exact element={<ProductEdit />} />
+            <Route path='/products/create' exact element={<ProductCreate />} />
+            <Route path='/products/edit/:id' exact element={<ProductEdit />} />
 
             <Route path='/purchase' exact element={<Purchase />} />
             {/* Do not remove this route its for 404 */}

@@ -41,7 +41,7 @@ function ProductCreate() {
                 <Link to="/products" className="btn-custom">Back</Link>
                 <Box className="form" boxSize="sm" mx="auto">
                     <Text fontSize='3xl' mb="20px">Add a New Product</Text>
-                    <form onSubmit={handleSubmit(onSubmit)}>
+                    <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
                         <FormControl isInvalid={errors.name}>
                             <FormLabel htmlFor="name">Product Name</FormLabel>
                             <Input placeholder='Product Name' id="name"
@@ -59,8 +59,8 @@ function ProductCreate() {
                             </FormErrorMessage>
                         </FormControl>
                         <FormControl mt={4} isInvalid={errors.image}>
-                            <FormLabel htmlFor="image">Image</FormLabel>
-                            <Input placeholder='Product Image' id="description" />
+                            <FormLabel htmlFor="image">Upload Image</FormLabel>
+                            <input type="file" />
                             <FormErrorMessage>
                                 {errors.image && errors.image.message}
                             </FormErrorMessage>

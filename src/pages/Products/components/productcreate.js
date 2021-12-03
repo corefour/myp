@@ -14,7 +14,6 @@ import { useForm } from "react-hook-form";
 import { addProduct } from "../../../services/Product"
 
 function ProductCreate() {
-
     const {
         handleSubmit,
         register,

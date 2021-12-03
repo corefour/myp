@@ -64,7 +64,6 @@ function UserCreate() {
                             _hover={{ bg: "pink.700" }}
                             float="right"
                             isLoading={isSubmitting}
-                            onClick={() => navigate('create')}
                         >
                             Save
                         </Button>

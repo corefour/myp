@@ -6,13 +6,13 @@ import awsconfig from "./aws-exports";
 import { ChakraProvider } from "@chakra-ui/react";
 import "./style.css";
 import Dashboard from "./pages/Dashboard/index";
-import { getCurrentUserJwtPayload, getCurrentUserRole } from './services/user';
+// import { getCurrentUserJwtPayload, getCurrentUserRole } from './services/user';
 
 Amplify.configure(awsconfig);
 
 function Main({ signOut, user }) {
     
-    getCurrentUserJwtPayload().then((res) => console.log(res))
+    // getCurrentUserJwtPayload().then((res) => console.log(res))
     return (
         <ChakraProvider>
             <Dashboard userdata={user.attributes} />

@@ -8,6 +8,12 @@ const GenralReducer = (state = genralstate, action) => {
                 profile: action.data
             }
             break
+        case "SET_ROLE":
+            state = {
+                ...state,
+                roles: action.data
+            }
+            break
     }
 
     return state

@@ -104,3 +104,56 @@ export async function listGroups(limit) {
   const { ...rest } = await API.get(apiName, path, myInit);
   return rest;
 }
+
+// export async function listUsersWithRole(limit){
+//   let apiName = 'AdminQueries';
+//   let path = '/listGroupsForUser';
+//   let nextToken;
+//   let username;
+//   await getUsersUsernames().then((res) => res.map(async (element) => {
+//     username = element;
+//     let myInit = {
+//       queryStringParameters: {
+//         "username": username,
+//         "token": nextToken
+//       },
+//       headers: {
+//         'Content-Type': 'application/json',
+//         Authorization: `${(await Auth.currentSession()).getAccessToken().getJwtToken()}`
+//       }
+//     }
+
+//     const { ...rest } = await API.get(apiName, path, myInit);
+//     return rest;
+//   }))
+// }
+
+// export async function getUsersUsernames(){
+//   let username = [];
+//   await listUsers().then((res) => res.Users.map((element) => {
+//     //console.log(element.Username)
+//    username.push(element.Username);
+//   }));
+//   return username;
+// }
+
+export async function listUserRole(username){
+
+  let apiName = 'AdminQueries';
+  let path = '/listGroupsForUser';
+  let nextToken;
+  let myInit = {
+    queryStringParameters: {
+      "username": username,
+      "token": nextToken
+    },
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `${(await Auth.currentSession()).getAccessToken().getJwtToken()}`
+    }
+  }
+
+  const { ...rest } = await API.get(apiName, path, myInit);
+  return rest.Groups[0].GroupName;
+}
+

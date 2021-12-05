@@ -10,7 +10,6 @@ import Dashboard from "./pages/Dashboard/index";
 Amplify.configure(awsconfig);
 
 function Main({ signOut, user }) {
-
     return (
         <ChakraProvider>
             <Dashboard userdata={user.attributes} />

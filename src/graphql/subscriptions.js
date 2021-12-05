@@ -127,7 +127,29 @@ export const onCreateCompany = /* GraphQL */ `
       id
       name
       description
-      userID
+      owner {
+        id
+        name
+        email
+        birth_date
+        role
+        companyID
+        createdAt
+        updatedAt
+      }
+      Users {
+        items {
+          id
+          name
+          email
+          birth_date
+          role
+          companyID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       Products {
         items {
           id
@@ -176,7 +198,29 @@ export const onUpdateCompany = /* GraphQL */ `
       id
       name
       description
-      userID
+      owner {
+        id
+        name
+        email
+        birth_date
+        role
+        companyID
+        createdAt
+        updatedAt
+      }
+      Users {
+        items {
+          id
+          name
+          email
+          birth_date
+          role
+          companyID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       Products {
         items {
           id
@@ -225,7 +269,29 @@ export const onDeleteCompany = /* GraphQL */ `
       id
       name
       description
-      userID
+      owner {
+        id
+        name
+        email
+        birth_date
+        role
+        companyID
+        createdAt
+        updatedAt
+      }
+      Users {
+        items {
+          id
+          name
+          email
+          birth_date
+          role
+          companyID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       Products {
         items {
           id
@@ -276,7 +342,7 @@ export const onCreateUser = /* GraphQL */ `
       email
       birth_date
       role
-      CompanyID
+      companyID
       createdAt
       updatedAt
     }
@@ -290,7 +356,7 @@ export const onUpdateUser = /* GraphQL */ `
       email
       birth_date
       role
-      CompanyID
+      companyID
       createdAt
       updatedAt
     }
@@ -304,7 +370,55 @@ export const onDeleteUser = /* GraphQL */ `
       email
       birth_date
       role
-      CompanyID
+      companyID
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreatePurchase = /* GraphQL */ `
+  subscription OnCreatePurchase {
+    onCreatePurchase {
+      id
+      itemsOrdered
+      quantity
+      dateOfOrder
+      supplierDetails
+      totalCost
+      currentStatus
+      companyID
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdatePurchase = /* GraphQL */ `
+  subscription OnUpdatePurchase {
+    onUpdatePurchase {
+      id
+      itemsOrdered
+      quantity
+      dateOfOrder
+      supplierDetails
+      totalCost
+      currentStatus
+      companyID
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeletePurchase = /* GraphQL */ `
+  subscription OnDeletePurchase {
+    onDeletePurchase {
+      id
+      itemsOrdered
+      quantity
+      dateOfOrder
+      supplierDetails
+      totalCost
+      currentStatus
+      companyID
       createdAt
       updatedAt
     }

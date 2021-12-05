@@ -108,7 +108,29 @@ export const getCompany = /* GraphQL */ `
       id
       name
       description
-      userID
+      owner {
+        id
+        name
+        email
+        birth_date
+        role
+        companyID
+        createdAt
+        updatedAt
+      }
+      Users {
+        items {
+          id
+          name
+          email
+          birth_date
+          role
+          companyID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       Products {
         items {
           id
@@ -162,7 +184,19 @@ export const listCompanys = /* GraphQL */ `
         id
         name
         description
-        userID
+        owner {
+          id
+          name
+          email
+          birth_date
+          role
+          companyID
+          createdAt
+          updatedAt
+        }
+        Users {
+          nextToken
+        }
         Products {
           nextToken
         }
@@ -187,7 +221,7 @@ export const getUser = /* GraphQL */ `
       email
       birth_date
       role
-      CompanyID
+      companyID
       createdAt
       updatedAt
     }
@@ -206,7 +240,106 @@ export const listUsers = /* GraphQL */ `
         email
         birth_date
         role
-        CompanyID
+        companyID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getPurchase = /* GraphQL */ `
+  query GetPurchase($id: ID!) {
+    getPurchase(id: $id) {
+      id
+      itemsOrdered
+      quantity
+      dateOfOrder
+      supplierDetails
+      totalCost
+      currentStatus
+      companyID
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listPurchases = /* GraphQL */ `
+  query ListPurchases(
+    $filter: ModelPurchaseFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listPurchases(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        itemsOrdered
+        quantity
+        dateOfOrder
+        supplierDetails
+        totalCost
+        currentStatus
+        companyID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const productsByCompany = /* GraphQL */ `
+  query ProductsByCompany(
+    $companyID: ID
+    $sortDirection: ModelSortDirection
+    $filter: ModelProductFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    productsByCompany(
+      companyID: $companyID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        name
+        description
+        image
+        price
+        quantity
+        custom_attributes
+        companyID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const usersByCompany = /* GraphQL */ `
+  query UsersByCompany(
+    $companyID: ID
+    $sortDirection: ModelSortDirection
+    $filter: ModelUserFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    usersByCompany(
+      companyID: $companyID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        name
+        email
+        birth_date
+        role
+        companyID
         createdAt
         updatedAt
       }

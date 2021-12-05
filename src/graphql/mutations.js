@@ -157,7 +157,29 @@ export const createCompany = /* GraphQL */ `
       id
       name
       description
-      userID
+      owner {
+        id
+        name
+        email
+        birth_date
+        role
+        companyID
+        createdAt
+        updatedAt
+      }
+      Users {
+        items {
+          id
+          name
+          email
+          birth_date
+          role
+          companyID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       Products {
         items {
           id
@@ -209,7 +231,29 @@ export const updateCompany = /* GraphQL */ `
       id
       name
       description
-      userID
+      owner {
+        id
+        name
+        email
+        birth_date
+        role
+        companyID
+        createdAt
+        updatedAt
+      }
+      Users {
+        items {
+          id
+          name
+          email
+          birth_date
+          role
+          companyID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       Products {
         items {
           id
@@ -261,7 +305,29 @@ export const deleteCompany = /* GraphQL */ `
       id
       name
       description
-      userID
+      owner {
+        id
+        name
+        email
+        birth_date
+        role
+        companyID
+        createdAt
+        updatedAt
+      }
+      Users {
+        items {
+          id
+          name
+          email
+          birth_date
+          role
+          companyID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       Products {
         items {
           id
@@ -315,7 +381,7 @@ export const createUser = /* GraphQL */ `
       email
       birth_date
       role
-      CompanyID
+      companyID
       createdAt
       updatedAt
     }
@@ -332,7 +398,7 @@ export const updateUser = /* GraphQL */ `
       email
       birth_date
       role
-      CompanyID
+      companyID
       createdAt
       updatedAt
     }
@@ -349,7 +415,64 @@ export const deleteUser = /* GraphQL */ `
       email
       birth_date
       role
-      CompanyID
+      companyID
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createPurchase = /* GraphQL */ `
+  mutation CreatePurchase(
+    $input: CreatePurchaseInput!
+    $condition: ModelPurchaseConditionInput
+  ) {
+    createPurchase(input: $input, condition: $condition) {
+      id
+      itemsOrdered
+      quantity
+      dateOfOrder
+      supplierDetails
+      totalCost
+      currentStatus
+      companyID
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updatePurchase = /* GraphQL */ `
+  mutation UpdatePurchase(
+    $input: UpdatePurchaseInput!
+    $condition: ModelPurchaseConditionInput
+  ) {
+    updatePurchase(input: $input, condition: $condition) {
+      id
+      itemsOrdered
+      quantity
+      dateOfOrder
+      supplierDetails
+      totalCost
+      currentStatus
+      companyID
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deletePurchase = /* GraphQL */ `
+  mutation DeletePurchase(
+    $input: DeletePurchaseInput!
+    $condition: ModelPurchaseConditionInput
+  ) {
+    deletePurchase(input: $input, condition: $condition) {
+      id
+      itemsOrdered
+      quantity
+      dateOfOrder
+      supplierDetails
+      totalCost
+      currentStatus
+      companyID
       createdAt
       updatedAt
     }

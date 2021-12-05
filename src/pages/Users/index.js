@@ -63,19 +63,18 @@ function User(props) {
         setLoading(true)
         listUsers(10).then((res) => {
             let temp = []
-            // console.log(res);
 
             res.forEach((item, index) => {
                 let x = ""
                 listUserRole(item.Attributes[0].Value).then(Response => {
-                    // console.log(Response.Groups[0], item.Attributes[4].Value);
 
+                    // console.log(Response.Groups[0], item.Attributes[4].Value);
                     if (Response.Groups[0] !== undefined)
                         x = Response.Groups[0].GroupName
 
                 }).catch(err => console.log(err))
 
-                console.log(x);
+                // console.log(x);
                 temp.push({
                     serialNo: index + 1,
                     username: item.Attributes[3].Value,
@@ -85,8 +84,8 @@ function User(props) {
                 })
             })
             setUsers(temp)
-            setLoading(false)
         })
+        setLoading(false)
     }, [])
 
     function userStatus(value) {
@@ -120,14 +119,6 @@ function User(props) {
                 />
             </Box>) : (
                 <Box>
-                    {
-                        props.profile.role === "Users" && <Button onClick={() => {
-                            setSelectedUser(null)
-                            onOpen()
-                        }} float="right" bgColor="pink.500" color="blue.50" mb="30px" _hover={{ bg: "pink.700" }}>
-                            Add User
-                        </Button>
-                    }
                     <Table
                         tabledata={users}
                         columns={columns}
@@ -145,6 +136,22 @@ function User(props) {
                         title={props.profile.role === "Users" ? (selectedUser === null ? "Add User" : "Edit User Role") : (selectedUser === null ? "" : "Enable User")}
                         body={<UserDetail selectedUser={selectedUser} setSelectedUser={setSelectedUser} />}
                     />
+
+                    <Button
+                        onClick={() => {
+                            setSelectedUser(null)
+                            onOpen()
+                        }}
+                        float="right"
+                        bgColor="pink.500"
+                        color="blue.50"
+                        mb="30px"
+                        _hover={{ bg: "pink.700" }}
+                        isDisabled={props.profile.role === "Admins"}
+                    >
+                        Add User
+                    </Button>
+
                 </Box>
             )}
         </>

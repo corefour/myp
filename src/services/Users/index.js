@@ -156,4 +156,3 @@ export async function listUserRole(username){
   const { ...rest } = await API.get(apiName, path, myInit);
   return rest.Groups[0].GroupName;
 }
-

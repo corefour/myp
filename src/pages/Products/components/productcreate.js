@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { addProduct } from "../../../services/Product"
 import { useNavigate, Outlet } from "react-router-dom"
+import { Storage } from "aws-amplify";
 
 function ProductCreate() {
     let navigate = useNavigate();
@@ -23,13 +24,17 @@ function ProductCreate() {
     } = useForm();
 
     function onSubmit(values) {
+        console.log(values);
         return new Promise((resolve) => {
             setTimeout(() => {
-                addProduct({ input: values }).then(() => {
-                    navigate('/products')
-                }).catch((err) => console.log(err));
+                Storage.put(values.image[0].name, values.image[0]).then(((res) => {
+                    values["image"] = res.key
+                    addProduct({ input: values }).then(() => {
+                        navigate('/products')
+                    }).catch((err) => console.log(err));
+                }));
                 resolve();
-            }, 3000);
+            }, 8000);
         });
     }
 
@@ -60,7 +65,8 @@ function ProductCreate() {
                         </FormControl>
                         <FormControl mt={4} isInvalid={errors.image}>
                             <FormLabel htmlFor="image">Upload Image</FormLabel>
-                            <input type="file" />
+                            <Input type="file" id="image"
+                                {...register("image", { required: "This is required" })} />
                             <FormErrorMessage>
                                 {errors.image && errors.image.message}
                             </FormErrorMessage>

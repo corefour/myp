@@ -23,18 +23,15 @@ import { getCurrentUserRole } from "./services/user";
 const Router = () => {
     const [role, setRole] = useState()
 
-    useEffect(() => {
-        getCurrentUserRole().then((res) => setRole(res))
-    }, [])
+    useEffect(() => { getCurrentUserRole().then((res) => setRole(res)) }, [])
 
     return (
         <Routes>
             <Route path='/' element={<Home />} />
 
-            <Route path='/users/*' element={<Users />} />
-            <Route path='/users/create' exact element={<UserCreate />} />
+            {(role === "Admins" || role === "Users") && <Route path='/users/*' element={<Users />} />}
 
-            {role === "Admins" && <>
+            {(role === "Admins" || role === "Users") && <>
                 <Route path='/company/*' element={<Company />} />
                 <Route path='/company/create' exact element={<CompanyCreate />} />
                 <Route path='/company/:id' exact element={<CompanyProfile />} />
@@ -45,6 +42,8 @@ const Router = () => {
             <Route path='/products/edit/:id' exact element={<ProductEdit />} />
 
             <Route path='/purchase' exact element={<Purchase />} />
+
+
             {/* Do not remove this route its for 404 */}
             <Route path="*" element={<Page404 />} />
         </Routes>

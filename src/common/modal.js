@@ -7,9 +7,11 @@ import {
     ModalFooter,
     ModalBody,
     ModalCloseButton,
+    Button
 } from '@chakra-ui/react'
 
 function CustomModal(props) {
+    console.log(props);
     return (
         <>
             <Modal isOpen={props.isOpen} onClose={props.onClose}>
@@ -31,6 +33,9 @@ function CustomModal(props) {
                         ) : (
                             <></>
                         )}
+                        <Button colorScheme='blue' mr={3} onClick={props.onClose}>
+                            Close
+                        </Button>
                     </ModalFooter>
                 </ModalContent>
             </Modal>

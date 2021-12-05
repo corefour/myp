@@ -8,12 +8,16 @@ import "react-tabulator/css/bulma/tabulator_bulma.min.css"
 import {
     Spinner,
     Button,
-    Box
+    Box,
+    useDisclosure
 } from '@chakra-ui/react';
+import CustomModal from "../../common/modal";
 
 
 function User(props) {
-    // const { isOpen, onOpen, onClose } = useDisclosure()
+
+    const { isOpen, onOpen, onClose } = useDisclosure();
+
     let navigate = useNavigate();
     const tableref = useRef(null)
     const [loading, setLoading] = useState(false)
@@ -97,8 +101,9 @@ function User(props) {
                         columns={columns}
                         options={columnConfig}
                         innerRef={tableref}
-                        rowClick={(e, row) => { console.log(row.getData()) }}
+                        rowClick={(e, row) => onOpen()}
                     />
+                    <CustomModal isOpen={isOpen} onClose={onClose}/>
                 </Box>
             )}
         </>

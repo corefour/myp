@@ -1,60 +1,111 @@
-import React, { useState, useEffect } from "react";
-import {
-    Box,
-    Container,
-    Table,
-    Thead,
-    Tbody,
-    Tr,
-    Th,
-    Button,
-    useDisclosure,
-    Spinner,
-    Td
-} from '@chakra-ui/react';
+import React, { useState, useRef, useEffect } from "react";
+import Table from "../../common/table"
+// import Modal from "../../common/modal"
 import { listUsers } from "../../services/Users";
-import UserRow from "./components/userlist"
-import { useNavigate, Outlet } from 'react-router-dom';
+import { connect } from "react-redux";
+import { useNavigate, Outlet } from "react-router-dom";
+import "react-tabulator/css/bulma/tabulator_bulma.min.css"
+import {
+    Spinner,
+    Button,
+    Box
+} from '@chakra-ui/react';
 
-function User() {
+
+function User(props) {
+    // const { isOpen, onOpen, onClose } = useDisclosure()
     let navigate = useNavigate();
-
-    const [userDetails, setUserDetails] = useState([])
+    const tableref = useRef(null)
+    const [loading, setLoading] = useState(false)
+    const [users, setUsers] = useState([])
+    const columns = [
+        {
+            title: "Serial No",
+            field: "serialNo",
+            hozAlign: "center"
+        }, {
+            title: "Username",
+            field: "username",
+            hozAlign: "center"
+        },
+        // {
+        //     title: "profileImage",
+        //     field: "profileImage",
+        // },
+        {
+            title: "Email Address",
+            field: "emailAddress",
+            hozAlign: "center"
+        },
+        {
+            title: "Status",
+            field: "status",
+            hozAlign: "center",
+            formatter: "tickCross"
+        },
+        {
+            title: "Role",
+            field: "role",
+            hozAlign: "center"
+        }
+    ]
 
     useEffect(() => {
-        listUsers(10).then((res) => setUserDetails(res.Users))
+        setLoading(true)
+        listUsers(10).then((res) => {
+            let temp = []
+            console.log(res);
+
+            res.Users.forEach((item, index) => {
+                temp.push({
+                    serialNo: index + 1,
+                    username: item.Attributes[3].Value,
+                    // profileImage:item.Attributes,
+                    emailAddress: item.Attributes[4].Value,
+                    status: item.Enabled,
+                    role:"IDK RAJ HAS NOT RETURNED THE ROLE"
+                })
+            })
+
+            setUsers(temp)
+            setLoading(false)
+        })
     }, [])
 
+    const columnConfig = {
+        placeholder: "No Results",
+        movableColumns: true,
+        layout: "fitColumns",
+        headerFilterPlaceholder: "",
+    }
 
     return (
-        <Box my="40px" className="users">
-            <Container maxW='container.xl'>
-                <Button onClick={() => navigate('create')} float="right" bgColor="pink.500" color="blue.50" mb="30px" _hover={{ bg: "pink.700" }}>Add User</Button>
-                <Table variant='striped' colorScheme='gray'>
-                    <Thead>
-                        <Tr>
-                            <Th>Sr. No.</Th>
-                            <Th>Username</Th>
-                            <Th>Profile Image</Th>
-                            <Th>Email Address</Th>
-                            <Th>Status</Th>
-                            <Th>Action</Th>
-                        </Tr>
-                    </Thead>
-                    <Tbody>
-                        {userDetails.length ? <UserRow userdetails={userDetails} setUserDetails={setUserDetails} /> : <Td><Spinner
-                            thickness='4px'
-                            speed='0.65s'
-                            emptyColor='gray.200'
-                            color='blue.500'
-                            size='xl'
-                        /></Td>}
-                    </Tbody>
-                </Table>
-            </Container>
-            {/* <Outlet /> */}
-        </Box>
+        <>
+            {loading ? (<Box>
+                <Spinner
+                    thickness='4px'
+                    speed='0.65s'
+                    emptyColor='gray.200'
+                    color='blue.500'
+                    size='xl'
+                />
+            </Box>) : (
+                <Box>
+                    <Button onClick={() => navigate('create')} float="right" bgColor="pink.500" color="blue.50" mb="30px" _hover={{ bg: "pink.700" }}>Add User</Button>
+                    <Table
+                        tabledata={users}
+                        columns={columns}
+                        options={columnConfig}
+                        innerRef={tableref}
+                        rowClick={(e, row) => { console.log(row.getData()) }}
+                    />
+                </Box>
+            )}
+        </>
     )
 }
 
-export default User
+const mapStateToProps = (state) => { return { profile: state.greduce.profile, roles: state.greduce.roles } }
+
+// export default User
+export default connect(mapStateToProps)(User)

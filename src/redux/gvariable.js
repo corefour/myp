@@ -1,3 +1,4 @@
 export const genralstate = {
-    profile: {}
+    profile: {},
+    roles: {}
 }

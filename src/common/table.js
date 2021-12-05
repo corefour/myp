@@ -9,8 +9,9 @@ export default function Table(props) {
 			columns={props.columns}
 			data={props.tabledata}
 			ref={props.innerRef}
-			// options={props.options}
-			rowClick={props.rowClick ? props.rowClick : () => {}}
+			options={props.options}
+			rowClick={props.rowClick ? props.rowClick : () => { }}
+			cellClick={props.cellClick ? props.cellClick : () => { }}
 		/>
 	)
 }

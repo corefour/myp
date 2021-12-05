@@ -1,5 +1,6 @@
 import { Auth, API } from 'aws-amplify';
-import AWS from 'aws-sdk';
+
+
 export async function listUsers(limit) {
   let apiName = 'AdminQueries';
   let path = '/listUsers';
@@ -17,8 +18,10 @@ export async function listUsers(limit) {
 
   const { NextToken, ...rest } = await API.get(apiName, path, myInit);
   nextToken = NextToken;
-  return rest;
+
+  return rest.Users;
 }
+
 
 export async function getUser(username) {
   let apiName = 'AdminQueries';
@@ -37,6 +40,7 @@ export async function getUser(username) {
   return rest;
 }
 
+
 export async function disableUser(username) {
   let apiName = 'AdminQueries';
   let path = '/disableUser';
@@ -52,6 +56,7 @@ export async function disableUser(username) {
 
   return await API.post(apiName, path, myInit);
 }
+
 
 export async function enableUser(username) {
   let apiName = 'AdminQueries';
@@ -69,6 +74,7 @@ export async function enableUser(username) {
   return await API.post(apiName, path, myInit);
 }
 
+
 export async function addUserToGroup(username, groupname) {
   let apiName = 'AdminQueries';
   let path = '/addUserToGroup';
@@ -85,6 +91,7 @@ export async function addUserToGroup(username, groupname) {
 
   return await API.post(apiName, path, myInit);
 }
+
 
 export async function listGroups(limit) {
   let apiName = 'AdminQueries';
@@ -137,7 +144,7 @@ export async function listGroups(limit) {
 //   return username;
 // }
 
-export async function listUserRole(username){
+export async function listUserRole(username) {
 
   let apiName = 'AdminQueries';
   let path = '/listGroupsForUser';
@@ -154,5 +161,5 @@ export async function listUserRole(username){
   }
 
   const { ...rest } = await API.get(apiName, path, myInit);
-  return rest.Groups[0].GroupName;
+  return rest;
 }

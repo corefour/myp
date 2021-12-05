@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
     FormControl,
     FormLabel,
@@ -8,14 +8,13 @@ import {
     Container,
     Text,
     Button
-} from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
+} from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
-import { addCompany } from "../../../services/Company"
-import { useNavigate, Outlet } from 'react-router-dom';
+import { addCompany } from "../../../services/Company";
+import { connect } from "react-redux";
 
-function UserCreate() {
-    let navigate = useNavigate();
+
+function AddCompany(props) {
     const {
         handleSubmit,
         register,
@@ -23,28 +22,25 @@ function UserCreate() {
     } = useForm();
 
     function onSubmit(values) {
+        values["owner"] = props.profile.name
+        values["createdAt"] = new Date(new Date().toString().split("GMT")[0] + " UTC").toISOString().split(".")[0] + "Z"
         return new Promise((resolve) => {
             setTimeout(() => {
                 addCompany({ input: values }).then(() => {
-                    navigate('/company')
                 }).catch((err) => console.log(err));
                 resolve();
             }, 3000);
         });
     }
 
-    const [value, onChange] = useState(new Date());
-
     return (
         <Box>
-            <Container maxW='container.xl' mt="30px">
-                <Link to="/company" className="btn-custom">Back</Link>
+            <Container maxW="container.xl" mt="30px">
                 <Box className="form" boxSize="sm" mx="auto">
-                    <Text fontSize='3xl' mb="20px">Add a New Company</Text>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <FormControl isInvalid={errors.name}>
                             <FormLabel htmlFor="name">Company Name</FormLabel>
-                            <Input placeholder='Company Name' id="name"
+                            <Input placeholder="Company Name" id="name"
                                 {...register("name", { required: "This is required" })} />
                             <FormErrorMessage>
                                 {errors.name && errors.name.message}
@@ -52,7 +48,7 @@ function UserCreate() {
                         </FormControl>
                         <FormControl mt={4} isInvalid={errors.description}>
                             <FormLabel htmlFor="description">Company Description</FormLabel>
-                            <Input placeholder='Company Description' id="description"
+                            <Input placeholder="Company Description" id="description"
                                 {...register("description", { required: "This is required" })} />
                             <FormErrorMessage>
                                 {errors.description && errors.description.message}
@@ -60,7 +56,7 @@ function UserCreate() {
                         </FormControl>
                         <Button
                             mt={4}
-                            type='submit'
+                            type="submit"
                             bgColor="pink.500"
                             color="blue.50"
                             _hover={{ bg: "pink.700" }}
@@ -77,4 +73,6 @@ function UserCreate() {
     )
 }
 
-export default UserCreate;
+const mapStateToProps = (state) => { return { profile: state.greduce.profile, roles: state.greduce.roles } }
+
+export default connect(mapStateToProps)(AddCompany)

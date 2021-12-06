@@ -13,7 +13,10 @@ import Products from "./pages/Products/index";
 import ProductCreate from "./pages/Products/components/productcreate";
 import ProductEdit from "./pages/Products/components/productedit";
 // Pruchase Page
-import Purchase from "./pages/Purchase/index";
+import Purchases from "./pages/purchaseManagement";
+import CreatePurchase from "./pages/purchaseManagement/components/createPurchaseOrder";
+import CreateExpenditures from "./pages/purchaseManagement/components/createExpenditures";
+import GetExpenditures from "./pages/purchaseManagement/components/getExpenditures";
 // Sales Page
 import Sales from "./pages/Sales";
 // User role
@@ -40,7 +43,12 @@ const Router = () => {
             <Route path="/products/create" exact element={<ProductCreate />} />
             <Route path="/products/edit/:id" exact element={<ProductEdit />} />
 
-            <Route path="/purchase" exact element={<Purchase />} />
+            <Route path='/purchase/' element={<Purchases/>} />
+            <Route path='/purchase/create' exact element={<CreatePurchase />}/>
+
+            <Route path='purchase/expenditures/' element={<CreateExpenditures />} />
+            <Route path='purchase/expendituresById/' element={<GetExpenditures />} />
+
 
             <Route path="/sales" exact element={<Sales />} />
 

@@ -43,7 +43,9 @@ type User @model @auth(rules: [{allow: public}]) @key(name: "byCompany", fields:
   companyID: ID
 }
  
- type Purchase @model @auth(rules: [{allow: public}]) {
+
+ 
+type Purchase @model @auth(rules: [{allow: public}]) {
   id: ID!
   itemsOrdered: String!
   quantity: Int!

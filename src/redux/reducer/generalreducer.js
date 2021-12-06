@@ -14,6 +14,9 @@ const GenralReducer = (state = genralstate, action) => {
                 roles: action.data
             }
             break
+
+        default:
+            state = { ...state }
     }
 
     return state

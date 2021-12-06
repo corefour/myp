@@ -1,13 +1,13 @@
-type Expenditure @model @auth(rules: [{allow: public}]) @key(name: "byCompany", fields: ["companyID"]) {
+type Expenditure @model @auth(rules: [{allow: public}]) @key(name: "byCompany", fields: ["companyID"], queryField: "expendituresByCompany") {
   id: ID!
   expenditur: Float!
   reason: String!
   companyID: ID
 }
 
-type Sale @model @auth(rules: [{allow: public}]) @key(name: "byCompany", fields: ["companyID"]) {
+type Sale @model @auth(rules: [{allow: public}]) @key(name: "byCompany", fields: ["companyID"], queryField: "salesByCompany") {
   id: ID!
-  sales: [AWSJSON!]
+  sales: [AWSJSON]!
   total: Float!
   companyID: ID
 }
@@ -43,7 +43,7 @@ type User @model @auth(rules: [{allow: public}]) @key(name: "byCompany", fields:
   companyID: ID
 }
  
- type Purchase @model @auth(rules: [{allow: public}]) {
+ type Purchase @model @auth(rules: [{allow: public}]) @key(name: "byCompany", fields: ["companyID"], queryField: "purchasesByCompany") {
   id: ID!
   itemsOrdered: String!
   quantity: Int!

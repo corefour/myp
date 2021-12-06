@@ -287,6 +287,60 @@ export const listPurchases = /* GraphQL */ `
     }
   }
 `;
+export const expendituresByCompany = /* GraphQL */ `
+  query ExpendituresByCompany(
+    $companyID: ID
+    $sortDirection: ModelSortDirection
+    $filter: ModelExpenditureFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    expendituresByCompany(
+      companyID: $companyID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        expenditur
+        reason
+        companyID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const salesByCompany = /* GraphQL */ `
+  query SalesByCompany(
+    $companyID: ID
+    $sortDirection: ModelSortDirection
+    $filter: ModelSaleFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    salesByCompany(
+      companyID: $companyID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        sales
+        total
+        companyID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
 export const productsByCompany = /* GraphQL */ `
   query ProductsByCompany(
     $companyID: ID
@@ -339,6 +393,37 @@ export const usersByCompany = /* GraphQL */ `
         email
         birth_date
         role
+        companyID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const purchasesByCompany = /* GraphQL */ `
+  query PurchasesByCompany(
+    $companyID: ID
+    $sortDirection: ModelSortDirection
+    $filter: ModelPurchaseFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    purchasesByCompany(
+      companyID: $companyID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        itemsOrdered
+        quantity
+        dateOfOrder
+        supplierDetails
+        totalCost
+        currentStatus
         companyID
         createdAt
         updatedAt

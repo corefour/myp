@@ -11,7 +11,7 @@ import {
 import { useForm } from "react-hook-form";
 import { addCompany } from "../../../services/Company";
 import { connect } from "react-redux";
-
+import { editUser } from "../../../services/DBUser";
 
 function AddCompany(props) {
     const {
@@ -21,10 +21,11 @@ function AddCompany(props) {
     } = useForm();
 
     function onSubmit(values) {
-        values["owner"] = props.profile.sub
+        values["companyOwnerId"]= props.profile.sub
         return new Promise((resolve) => {
             setTimeout(() => {
-                addCompany({ input: values }).then(() => {
+                addCompany({ input: values }).then(async (res) => {
+                    await editUser({input: { id: props.profile.sub, companyID: res.data.createCompany.id}});
                 }).catch((err) => console.log(err));
                 resolve();
             }, 3000);

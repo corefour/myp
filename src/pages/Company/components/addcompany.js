@@ -6,7 +6,6 @@ import {
     Input,
     Box,
     Container,
-    Text,
     Button
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
@@ -22,7 +21,7 @@ function AddCompany(props) {
     } = useForm();
 
     function onSubmit(values) {
-        values["owner"] = props.profile.name
+        values["owner"] = props.profile.sub
         values["createdAt"] = new Date(new Date().toString().split("GMT")[0] + " UTC").toISOString().split(".")[0] + "Z"
         return new Promise((resolve) => {
             setTimeout(() => {

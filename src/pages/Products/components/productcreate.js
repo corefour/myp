@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
     FormControl,
     FormLabel,
@@ -12,7 +12,7 @@ import {
 import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { addProduct } from "../../../services/Product"
-import { useNavigate, Outlet } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { Storage } from "aws-amplify";
 
 function ProductCreate() {
@@ -37,8 +37,6 @@ function ProductCreate() {
             }, 8000);
         });
     }
-
-    const [value, onChange] = useState(new Date());
 
     return (
         <Box>

@@ -16,7 +16,7 @@ import {
     Flex
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
-import { FaBars, FaAngleDown, FaUserCircle } from 'react-icons/fa';
+import { FaBars, FaUserCircle } from 'react-icons/fa';
 import { Auth } from 'aws-amplify';
 import { connect } from "react-redux";
 

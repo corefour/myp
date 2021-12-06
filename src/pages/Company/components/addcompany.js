@@ -22,7 +22,6 @@ function AddCompany(props) {
 
     function onSubmit(values) {
         values["owner"] = props.profile.sub
-        values["createdAt"] = new Date(new Date().toString().split("GMT")[0] + " UTC").toISOString().split(".")[0] + "Z"
         return new Promise((resolve) => {
             setTimeout(() => {
                 addCompany({ input: values }).then(() => {

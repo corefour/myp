@@ -22,8 +22,7 @@ function AddCompany(props) {
     } = useForm();
 
     function onSubmit(values) {
-        values["owner"] = props.profile.name
-        values["createdAt"] = new Date(new Date().toString().split("GMT")[0] + " UTC").toISOString().split(".")[0] + "Z"
+        values["owner"] = props.profile.sub
         return new Promise((resolve) => {
             setTimeout(() => {
                 addCompany({ input: values }).then(() => {

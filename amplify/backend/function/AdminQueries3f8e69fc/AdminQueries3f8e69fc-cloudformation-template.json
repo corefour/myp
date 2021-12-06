@@ -58,7 +58,7 @@
             "ENV": {
               "Ref": "env"
             },
-            "GROUP": "Admins",
+            "GROUP": "NONE",
             "USERPOOL": {
               "Ref": "authprojectAuthUserPoolId"
             }

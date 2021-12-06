@@ -14,6 +14,8 @@ import ProductCreate from "./pages/Products/components/productcreate";
 import ProductEdit from "./pages/Products/components/productedit";
 // Pruchase Page
 import Purchase from "./pages/Purchase/index";
+// Sales Page
+import Sales from "./pages/Sales";
 // User role
 import { getCurrentUserRole } from "./services/user";
 
@@ -39,6 +41,8 @@ const Router = () => {
             <Route path="/products/edit/:id" exact element={<ProductEdit />} />
 
             <Route path="/purchase" exact element={<Purchase />} />
+
+            <Route path="/sales" exact element={<Sales />} />
 
 
             {/* Do not remove this route its for 404 */}

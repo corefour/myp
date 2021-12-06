@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
     Tabs,
     TabList,
@@ -9,36 +9,36 @@ import {
     Container,
     Image,
     Text
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 import logo from "../../../assets/company-logo.png";
 import bg from "../../../assets/bg.jpg";
-// import Products from "../../Products"
-import { useParams } from 'react-router-dom';
-import { singleCompany } from "../../../services/Company"
+import Products from "../../Products";
+import Sales from "../../Sales";
+import { useParams } from "react-router-dom";
+import { singleCompany } from "../../../services/Company";
 
-function CompanyProfile(props) {
-    console.log(props);
-    // let { id } = useParams();
+function CompanyProfile() {
+    let { id } = useParams();
 
-    // const [val, setVal] = useState({ name: "", description: "", image: "" })
+    const [val, setVal] = useState({ name: "", description: "", image: "" })
 
-    // useEffect(() => {
-    //     singleCompany(id).then((res) => setVal(res.data.getCompany))
-    // }, [])
+    useEffect(() => {
+        singleCompany(id).then((res) => setVal(res.data.getCompany))
+    }, [])
 
     return (
         <Box className="company-profile">
             <Box className="banner">
                 <Image src={bg} alt="Banner" className="bannerImg" />
-                <Container maxW='container.xl'>
+                <Container maxW="container.xl">
                     <Box className="company-title">
                         <Image src={logo} alt="Company Logo" />
-                        <Text>{props.selectedCompany.name}</Text>
+                        <Text>{val.name}</Text>
                     </Box>
                 </Container>
             </Box>
             <Box className="tabs">
-                <Container maxW='container.xl'>
+                <Container maxW="container.xl">
                     <Tabs>
                         <TabList>
                             <Tab>Products</Tab>
@@ -47,11 +47,10 @@ function CompanyProfile(props) {
                         </TabList>
                         <TabPanels>
                             <TabPanel>
-                                {/* <Products /> */}
-                                one
+                                <Products />
                             </TabPanel>
                             <TabPanel>
-                                <p>two!</p>
+                                <Sales />
                             </TabPanel>
                             <TabPanel>
                                 <p>three!</p>

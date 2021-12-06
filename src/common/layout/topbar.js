@@ -16,7 +16,7 @@ import {
     Flex
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
-import { FaBars, FaAngleDown, FaUserCircle } from 'react-icons/fa';
+import { FaBars, FaUserCircle } from 'react-icons/fa';
 import { Auth } from 'aws-amplify';
 import { connect } from "react-redux";
 
@@ -55,6 +55,8 @@ function TopBar(props) {
                                 <Link to="/users">Users</Link>
                                 <Link to="/company">Company</Link>
                                 <Link to="/products">Product</Link>
+                                <Link to="/sales">Sales</Link>
+                                <Link to="/purchase">Purchase</Link>
                             </DrawerContent>
                         </Drawer>
                     </Box>

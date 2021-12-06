@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
     Grid,
     Text,
@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import pic1 from "../../../assets/pic1.jpg";
-import { FaRegTrashAlt, FaPen } from 'react-icons/fa';
+import { FaRegTrashAlt } from 'react-icons/fa';
 import { removeProduct } from "../../../services/Product"
 
 
@@ -43,4 +43,4 @@ function Productlist(props) {
     )
 }
 
-export default Productlist  
+export default Productlist

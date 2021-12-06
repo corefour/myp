@@ -1,0 +1,102 @@
+import React, { useState, useEffect, useRef } from "react";
+import { allSales } from "../../services/Sales";
+import Table from "../../common/table";
+import CustomModal from "../../common/modal";
+import "react-tabulator/css/bulma/tabulator_bulma.min.css";
+import {
+    Box,
+    Button,
+    Spinner,
+    useDisclosure
+} from '@chakra-ui/react';
+
+
+function Sales() {
+    const [sales, setSales] = useState([])
+    const columns = [
+        {
+            title: "Company Name",
+            field: "name",
+            hozAlign: "center"
+        },
+        {
+            title: "Company Owner",
+            field: "owner",
+            hozAlign: "center"
+        },
+        {
+            title: "Company created",
+            field: "createdAt",
+            hozAlign: "center"
+        },
+        {
+            title: "Company Description",
+            field: "description",
+            hozAlign: "center"
+        }
+    ]
+    const columnConfig = {
+        placeholder: "No Results",
+        movableColumns: true,
+        layout: "fitColumns",
+        headerFilterPlaceholder: "",
+    }
+    const [loading, setLoading] = useState(false)
+    const tableref = useRef(null)
+    const { isOpen, onOpen, onClose } = useDisclosure();
+
+    useEffect(() => {
+        allSales().then(res => {
+            console.log(res);
+        })
+    }, [])
+
+    return (
+        <>
+            {loading ? (<Box>
+                <Spinner
+                    thickness='4px'
+                    speed='0.65s'
+                    emptyColor='gray.200'
+                    color='blue.500'
+                    size='xl'
+                />
+            </Box>) : (
+                <Box>
+                    <Table
+                        tabledata={sales}
+                        columns={columns}
+                        options={columnConfig}
+                        innerRef={tableref}
+                        rowClick={((e, row) => {
+                            console.log(row.getData());
+                            // <Link to={"/" + row.getData().id + "/"} />
+                        })}
+                    />
+                    <CustomModal
+                        isOpen={isOpen}
+                        onClose={onClose}
+                        title="Add Sales"
+                        // body={<AddCompany setCompanys={setCompanys} />}
+                    />
+
+                    <Button
+                        onClick={() => {
+                            onOpen()
+                        }}
+                        float="right"
+                        bgColor="pink.500"
+                        color="blue.50"
+                        mb="30px"
+                        _hover={{ bg: "pink.700" }}
+                    >
+                        Add Sales
+                    </Button>
+
+                </Box>
+            )}
+        </>
+    )
+}
+
+export default Sales

@@ -9,11 +9,12 @@ import "react-tabulator/css/bulma/tabulator_bulma.min.css";
 import Table from "../../common/table";
 import CustomModal from "../../common/modal";
 import AddCompany from "./components/addcompany";
-import CompanyProfile from "./components/companyprofile";
 import { allCompanys } from "../../services/Company";
+import { useNavigate } from 'react-router-dom';
+
 
 function Company() {
-    const [selectedCompany, setSelectedCompany] = useState(null)
+    let navigate = useNavigate();
     const [companys, setCompanys] = useState([])
     const columns = [
         {
@@ -47,12 +48,22 @@ function Company() {
     const tableref = useRef(null)
     const { isOpen, onOpen, onClose } = useDisclosure();
 
-
     useEffect(() => {
+        let temp = []
+        setLoading(true)
         allCompanys().then((res) => {
-            console.log(res.data.listCompanys.items);
-            setCompanys(res.data.listCompanys.items)
+            res.data.listCompanys.items.forEach(element => {
+                temp.push({
+                    id: element.id,
+                    name: element.name,
+                    owner: element.owner !== null ? element.owner.name : null,
+                    createdAt: element.createdAt,
+                    description: element.description
+                })
+            });
+            setCompanys(temp)
         })
+        setLoading(false)
     }, [])
 
     return (
@@ -67,24 +78,19 @@ function Company() {
                 />
             </Box>) : (
                 <Box>
-                    {selectedCompany === null && <Table
+                    <Table
                         tabledata={companys}
                         columns={columns}
                         options={columnConfig}
                         innerRef={tableref}
-                        rowClick={((e, row) => {
-                            setSelectedCompany(row.getData())
-                        })}
-                    />}
+                        rowClick={((e, row) => { navigate("/company/" + row.getData().id) })}
+                    />
                     <CustomModal
                         isOpen={isOpen}
                         onClose={onClose}
                         title="Add Company"
                         body={<AddCompany setCompanys={setCompanys} />}
                     />
-
-                    {selectedCompany !== null && <CompanyProfile selectedCompany={selectedCompany} />}
-
                     <Button
                         onClick={() => {
                             onOpen()

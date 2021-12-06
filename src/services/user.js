@@ -1,6 +1,6 @@
 import { Auth } from 'aws-amplify';
 
-export async function getCurrentUserJwtPayload(){
+export async function getCurrentUserJwtPayload() {
 
     try {
         const { signInUserSession } = await Auth.currentAuthenticatedUser();
@@ -11,15 +11,15 @@ export async function getCurrentUserJwtPayload(){
     }
 }
 
-export async function getCurrentUserRole(){
+export async function getCurrentUserRole() {
 
     try {
         const { idToken } = await getCurrentUserJwtPayload();
-        
+
         const role = idToken.payload["cognito:groups"][0];
         return role;
 
-    } catch(err) {
+    } catch (err) {
         return err;
     }
 }

@@ -11,7 +11,6 @@ import {
 } from '@chakra-ui/react'
 
 function CustomModal(props) {
-    console.log(props);
     return (
         <>
             <Modal isOpen={props.isOpen} onClose={props.onClose}>

@@ -16,14 +16,15 @@ import bg from "../../../assets/bg.jpg";
 import { useParams } from 'react-router-dom';
 import { singleCompany } from "../../../services/Company"
 
-function CompanyProfile() {
-    let { id } = useParams();
+function CompanyProfile(props) {
+    console.log(props);
+    // let { id } = useParams();
 
-    const [val, setVal] = useState({ name: "", description: "", image: "" })
+    // const [val, setVal] = useState({ name: "", description: "", image: "" })
 
-    useEffect(() => {
-        singleCompany(id).then((res) => setVal(res.data.getCompany))
-    }, [])
+    // useEffect(() => {
+    //     singleCompany(id).then((res) => setVal(res.data.getCompany))
+    // }, [])
 
     return (
         <Box className="company-profile">
@@ -32,7 +33,7 @@ function CompanyProfile() {
                 <Container maxW='container.xl'>
                     <Box className="company-title">
                         <Image src={logo} alt="Company Logo" />
-                        <Text>{val.name}</Text>
+                        <Text>{props.selectedCompany.name}</Text>
                     </Box>
                 </Container>
             </Box>

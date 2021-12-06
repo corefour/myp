@@ -102,24 +102,25 @@ a:hover{
     background: none;
 }
 
+/* Add Company */
+.modal-form{
+    padding: 0 !important;
+}
+
+
 /* Company Profile */
 .company-profile .banner{
     height: 450px;
     overflow: hidden;
     box-shadow: var(--chakra-shadows-md);
-}
-.company-profile .banner .bannerImg{
-    position: relative;
-    width: 100%;
-    height: auto;
+    background: url("./assets/bg.jpg");
+    background-size: cover;
 }
 .company-profile .company-title{
-    position: absolute;
-    left: 0%;
-    top: 40%;
-    transform: translate(0%, -50%);
+    position: relative;
     width: 100%;
     padding-left: 10%;
+    padding-top: 40px;
 }
 .company-profile .company-title img{
     position: relative;

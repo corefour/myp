@@ -1,67 +1,84 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
     Box,
-    Container,
-    Table,
-    Thead,
-    Tbody,
-    Tr,
-    Th,
     Button,
-    useDisclosure,
     Spinner,
-    Td,
-    NumberInput,
-    NumberInputField,
-    NumberInputStepper,
-    NumberIncrementStepper,
-    NumberDecrementStepper,
+    useDisclosure,
+    Container
 } from '@chakra-ui/react';
-import {useNavigate, Outlet} from 'react-router-dom';
-import { useCounter } from "@chakra-ui/counter"
+import "react-tabulator/css/bulma/tabulator_bulma.min.css";
+import Table from "../../common/table";
+import { useNavigate } from 'react-router-dom';
 
-function User() {
+
+function Puchase() {
     let navigate = useNavigate();
-
-    const [userDetails, setUserDetails] = useState([])
+    const [companys, setCompanys] = useState([])
+    const columns = [
+        {
+            title: "Sr. No.",
+            field: "1",
+            hozAlign: "left"
+        },
+        {
+            title: "Product Name",
+            field: "product",
+            hozAlign: "left"
+        },
+        {
+            title: "Product Image",
+            field: "image",
+            hozAlign: "left"
+        },
+        {
+            title: "Quantity Left",
+            field: "quantity",
+            hozAlign: "left"
+        },
+        {
+            title: "Add",
+            field: "quantity",
+            hozAlign: "left"
+        }
+    ]
+    const columnConfig = {
+        placeholder: "No Results",
+        movableColumns: true,
+        layout: "fitColumns",
+        headerFilterPlaceholder: "",
+    }
+    const [loading, setLoading] = useState(false)
+    const tableref = useRef(null)
+    const { isOpen, onOpen, onClose } = useDisclosure();
 
     return (
-        <Box my="40px" className="purchase">
-            <Container maxW='container.xl'>
-                <Table variant='striped' colorScheme='gray'>
-                    <Thead>
-                        <Tr>
-                            <Th>Sr. No.</Th>
-                            <Th>Product Name</Th>
-                            <Th>Product Image</Th>
-                            <Th>Quantity Left</Th>
-                            <Th>Added</Th>
-                            <Th>Action</Th>
-                        </Tr>
-                    </Thead>
-                    <Tbody>
-                        <Tr>
-                            <Td>1.</Td>
-                            <Td>Product Name 1</Td>
-                            <Td>Image</Td>
-                            <Td>50</Td>
-                            <Td>
-                                <NumberInput defaultValue={15} min={1} max={20} w={100}>
-                                    <NumberInputField />
-                                    <NumberInputStepper>
-                                        <NumberIncrementStepper />
-                                        <NumberDecrementStepper />
-                                    </NumberInputStepper>
-                                </NumberInput>
-                            </Td>
-                            <Td><Button className="btn-add" bgColor="gray.700" color="blue.50" mb="30px" _hover={{ bg: "pink.500" }} mb="0">Add</Button></Td>
-                        </Tr>
-                    </Tbody>
-                </Table>
-            </Container>
-            {/* <Outlet /> */}
-        </Box>
+        <>
+            <Box my="40px" className="product">
+                <Container maxW='container.xl'>
+                    {loading ? (<Box>
+                        <Spinner
+                            thickness='4px'
+                            speed='0.65s'
+                            emptyColor='gray.200'
+                            color='blue.500'
+                            size='xl'
+                        />
+                    </Box>) : (
+                        <Box>
+                            <Table
+                                tabledata={companys}
+                                columns={columns}
+                                options={columnConfig}
+                                innerRef={tableref}
+                                rowClick={((e, row) => { navigate("/company/" + row.getData().id) })}
+                            />
+
+                        </Box>
+                    )}
+                </Container>
+            </Box>
+        </>
     )
 }
 
-export default User
+export default Puchase

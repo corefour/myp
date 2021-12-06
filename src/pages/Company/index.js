@@ -3,7 +3,8 @@ import {
     Box,
     Button,
     Spinner,
-    useDisclosure
+    useDisclosure,
+    Container
 } from '@chakra-ui/react';
 import "react-tabulator/css/bulma/tabulator_bulma.min.css";
 import Table from "../../common/table";
@@ -20,22 +21,22 @@ function Company() {
         {
             title: "Company Name",
             field: "name",
-            hozAlign: "center"
+            hozAlign: "left"
         },
         {
             title: "Company Owner",
             field: "owner",
-            hozAlign: "center"
+            hozAlign: "left"
         },
         {
             title: "Company created",
             field: "createdAt",
-            hozAlign: "center"
+            hozAlign: "left"
         },
         {
             title: "Company Description",
             field: "description",
-            hozAlign: "center"
+            hozAlign: "left"
         }
     ]
     const columnConfig = {
@@ -68,44 +69,48 @@ function Company() {
 
     return (
         <>
-            {loading ? (<Box>
-                <Spinner
-                    thickness='4px'
-                    speed='0.65s'
-                    emptyColor='gray.200'
-                    color='blue.500'
-                    size='xl'
-                />
-            </Box>) : (
-                <Box>
-                    <Table
-                        tabledata={companys}
-                        columns={columns}
-                        options={columnConfig}
-                        innerRef={tableref}
-                        rowClick={((e, row) => { navigate("/company/" + row.getData().id) })}
-                    />
-                    <CustomModal
-                        isOpen={isOpen}
-                        onClose={onClose}
-                        title="Add Company"
-                        body={<AddCompany setCompanys={setCompanys} />}
-                    />
-                    <Button
-                        onClick={() => {
-                            onOpen()
-                        }}
-                        float="right"
-                        bgColor="pink.500"
-                        color="blue.50"
-                        mb="30px"
-                        _hover={{ bg: "pink.700" }}
-                    >
-                        Add Company
-                    </Button>
+            <Box my="40px" className="product">
+                <Container maxW='container.xl'>
+                    {loading ? (<Box>
+                        <Spinner
+                            thickness='4px'
+                            speed='0.65s'
+                            emptyColor='gray.200'
+                            color='blue.500'
+                            size='xl'
+                        />
+                    </Box>) : (
+                        <Box>
+                            <Table
+                                tabledata={companys}
+                                columns={columns}
+                                options={columnConfig}
+                                innerRef={tableref}
+                                rowClick={((e, row) => { navigate("/company/" + row.getData().id) })}
+                            />
+                            <CustomModal
+                                isOpen={isOpen}
+                                onClose={onClose}
+                                title="Add Company"
+                                body={<AddCompany setCompanys={setCompanys} />}
+                            />
+                            <Button
+                                onClick={() => {
+                                    onOpen()
+                                }}
+                                float="right"
+                                bgColor="pink.500"
+                                color="blue.50"
+                                mt="30px"
+                                _hover={{ bg: "pink.700" }}
+                            >
+                                Add Company
+                            </Button>
 
-                </Box>
-            )}
+                        </Box>
+                    )}
+                </Container>
+            </Box>
         </>
     )
 }

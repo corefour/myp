@@ -37,18 +37,18 @@ function UserDetail(props) {
     }
     return (
         <Box>
-            <Container maxW="container.xl" mt="30px">
+            <Container maxW="container.xl" mt="30px" className="modal-form">
                 <Box className="form" boxSize="sm" mx="auto">
                     <form onSubmit={handleSubmit(onSubmit)}>
 
-                        {/* <FormControl isInvalid={errors.name}>
-                            <FormLabel htmlFor="name">Full Name</FormLabel>
-                            <Input placeholder="Full Name" id="name"
-                                {...register("name", { required: "This is required" })} />
+                        <FormControl isInvalid={errors.name}>
+                            <FormLabel htmlFor="email">Email Address</FormLabel>
+                            <Input placeholder="Email Address" id="email"
+                                {...register("email", { required: "This is required" })} />
                             <FormErrorMessage>
-                                {errors.name && errors.name.message}
+                                {errors.email && errors.email.message}
                             </FormErrorMessage>
-                        </FormControl> */}
+                        </FormControl>
 
 
                         <Button

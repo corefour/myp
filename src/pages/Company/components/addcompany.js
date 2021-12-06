@@ -34,7 +34,7 @@ function AddCompany(props) {
 
     return (
         <Box>
-            <Container maxW="container.xl" mt="30px">
+            <Container maxW="container.xl" mt="30px" className="modal-form">
                 <Box className="form" boxSize="sm" mx="auto">
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <FormControl isInvalid={errors.name}>
@@ -64,7 +64,6 @@ function AddCompany(props) {
                         >
                             Save
                         </Button>
-                        <Box className="clear"></Box>
                     </form>
                 </Box>
             </Container>

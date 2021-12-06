@@ -29,7 +29,6 @@ function CompanyProfile() {
     return (
         <Box className="company-profile">
             <Box className="banner">
-                <Image src={bg} alt="Banner" className="bannerImg" />
                 <Container maxW="container.xl">
                     <Box className="company-title">
                         <Image src={logo} alt="Company Logo" />

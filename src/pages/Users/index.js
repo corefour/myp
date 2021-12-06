@@ -10,7 +10,8 @@ import {
     Spinner,
     Button,
     Box,
-    useDisclosure
+    useDisclosure,
+    Container
 } from '@chakra-ui/react';
 
 
@@ -24,11 +25,11 @@ function User(props) {
         {
             title: "Serial No",
             field: "serialNo",
-            hozAlign: "center"
+            hozAlign: "left"
         }, {
             title: "Username",
             field: "username",
-            hozAlign: "center"
+            hozAlign: "left"
         },
         // {
         //     title: "profileImage",
@@ -37,19 +38,19 @@ function User(props) {
         {
             title: "Email Address",
             field: "emailAddress",
-            hozAlign: "center"
+            hozAlign: "left"
         },
         {
             title: "Status",
             field: "status",
-            hozAlign: "center",
+            hozAlign: "left",
             formatter: "tickCross",
             editor: props.profile.role === "Admins"
         },
         {
             title: "Role",
             field: "role",
-            hozAlign: "center"
+            hozAlign: "left"
         }
     ]
     const columnConfig = {
@@ -109,51 +110,54 @@ function User(props) {
 
     return (
         <>
-            {loading ? (<Box>
-                <Spinner
-                    thickness='4px'
-                    speed='0.65s'
-                    emptyColor='gray.200'
-                    color='blue.500'
-                    size='xl'
-                />
-            </Box>) : (
-                <Box>
-                    <Table
-                        tabledata={users}
-                        columns={columns}
-                        options={columnConfig}
-                        innerRef={tableref}
-                        rowClick={props.profile.role === "Users" ? ((e, row) => {
-                            setSelectedUser(row.getData())
-                            onOpen()
-                        }) : (() => { })}
-                        cellClick={props.profile.role === "Admins" ? ((e, cell) => userStatus(cell.getData())) : (() => { })}
-                    />
-                    <CustomModal
-                        isOpen={isOpen}
-                        onClose={onClose}
-                        title={props.profile.role === "Users" ? (selectedUser === null ? "Add User" : "Edit User Role") : (selectedUser === null ? "" : "Enable User")}
-                        body={<UserDetail selectedUser={selectedUser} setSelectedUser={setSelectedUser} />}
-                    />
+            <Box my="40px" className="product">
+                <Container maxW='container.xl'>
+                    {loading ? (<Box>
+                        <Spinner
+                            thickness='4px'
+                            speed='0.65s'
+                            emptyColor='gray.200'
+                            color='blue.500'
+                            size='xl'
+                        />
+                    </Box>) : (
+                        <Box>
+                            <Table
+                                tabledata={users}
+                                columns={columns}
+                                options={columnConfig}
+                                innerRef={tableref}
+                                rowClick={props.profile.role === "Users" ? ((e, row) => {
+                                    setSelectedUser(row.getData())
+                                    onOpen()
+                                }) : (() => { })}
+                                cellClick={props.profile.role === "Admins" ? ((e, cell) => userStatus(cell.getData())) : (() => { })}
+                            />
+                            <CustomModal
+                                isOpen={isOpen}
+                                onClose={onClose}
+                                title={props.profile.role === "Users" ? (selectedUser === null ? "Add User" : "Edit User Role") : (selectedUser === null ? "" : "Enable User")}
+                                body={<UserDetail selectedUser={selectedUser} setSelectedUser={setSelectedUser} />}
+                            />
+                            <Button
+                                onClick={() => {
+                                    setSelectedUser(null)
+                                    onOpen()
+                                }}
+                                float="right"
+                                bgColor="pink.500"
+                                color="blue.50"
+                                mt="30px"
+                                _hover={{ bg: "pink.700" }}
+                                isDisabled={props.profile.role === "Admins"}
+                            >
+                                Add User
+                            </Button>
 
-                    <Button
-                        onClick={() => {
-                            setSelectedUser(null)
-                            onOpen()
-                        }}
-                        float="right"
-                        bgColor="pink.500"
-                        color="blue.50"
-                        mb="30px"
-                        _hover={{ bg: "pink.700" }}
-                        isDisabled={props.profile.role === "Admins"}
-                    >
-                        Add User
-                    </Button>
-
-                </Box>
-            )}
+                        </Box>
+                    )}
+                </Container>
+            </Box>
         </>
     )
 }

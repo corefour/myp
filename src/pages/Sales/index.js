@@ -7,7 +7,8 @@ import {
     Box,
     Button,
     Spinner,
-    useDisclosure
+    useDisclosure,
+    Container
 } from '@chakra-ui/react';
 
 
@@ -17,22 +18,22 @@ function Sales() {
         {
             title: "Company Name",
             field: "name",
-            hozAlign: "center"
+            hozAlign: "left"
         },
         {
             title: "Company Owner",
             field: "owner",
-            hozAlign: "center"
+            hozAlign: "left"
         },
         {
             title: "Company created",
             field: "createdAt",
-            hozAlign: "center"
+            hozAlign: "left"
         },
         {
             title: "Company Description",
             field: "description",
-            hozAlign: "center"
+            hozAlign: "left"
         }
     ]
     const columnConfig = {
@@ -53,48 +54,52 @@ function Sales() {
 
     return (
         <>
-            {loading ? (<Box>
-                <Spinner
-                    thickness='4px'
-                    speed='0.65s'
-                    emptyColor='gray.200'
-                    color='blue.500'
-                    size='xl'
-                />
-            </Box>) : (
-                <Box>
-                    <Table
-                        tabledata={sales}
-                        columns={columns}
-                        options={columnConfig}
-                        innerRef={tableref}
-                        rowClick={((e, row) => {
-                            console.log(row.getData());
-                            // <Link to={"/" + row.getData().id + "/"} />
-                        })}
-                    />
-                    <CustomModal
-                        isOpen={isOpen}
-                        onClose={onClose}
-                        title="Add Sales"
-                        // body={<AddCompany setCompanys={setCompanys} />}
-                    />
+            <Box my="40px" className="product">
+                <Container maxW='container.xl'>
+                    {loading ? (<Box>
+                        <Spinner
+                            thickness='4px'
+                            speed='0.65s'
+                            emptyColor='gray.200'
+                            color='blue.500'
+                            size='xl'
+                        />
+                    </Box>) : (
+                        <Box>
+                            <Table
+                                tabledata={sales}
+                                columns={columns}
+                                options={columnConfig}
+                                innerRef={tableref}
+                                rowClick={((e, row) => {
+                                    console.log(row.getData());
+                                    // <Link to={"/" + row.getData().id + "/"} />
+                                })}
+                            />
+                            <CustomModal
+                                isOpen={isOpen}
+                                onClose={onClose}
+                                title="Add Sales"
+                                // body={<AddCompany setCompanys={setCompanys} />}
+                            />
 
-                    <Button
-                        onClick={() => {
-                            onOpen()
-                        }}
-                        float="right"
-                        bgColor="pink.500"
-                        color="blue.50"
-                        mb="30px"
-                        _hover={{ bg: "pink.700" }}
-                    >
-                        Add Sales
-                    </Button>
+                            <Button
+                                onClick={() => {
+                                    onOpen()
+                                }}
+                                float="right"
+                                bgColor="pink.500"
+                                color="blue.50"
+                                mb="30px"
+                                _hover={{ bg: "pink.700" }}
+                            >
+                                Add Sales
+                            </Button>
 
-                </Box>
-            )}
+                        </Box>
+                    )}
+                </Container>
+            </Box>
         </>
     )
 }

@@ -25,17 +25,6 @@ function CustomModal(props) {
                             <></>
                         )}
                     </ModalBody>
-
-                    <ModalFooter>
-                        {props.footer !== undefined ? (
-                            <>{props.footer}</>
-                        ) : (
-                            <></>
-                        )}
-                        <Button colorScheme='blue' mr={3} onClick={props.onClose}>
-                            Close
-                        </Button>
-                    </ModalFooter>
                 </ModalContent>
             </Modal>
         </>

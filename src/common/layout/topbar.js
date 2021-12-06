@@ -55,6 +55,8 @@ function TopBar(props) {
                                 <Link to="/users">Users</Link>
                                 <Link to="/company">Company</Link>
                                 <Link to="/products">Product</Link>
+                                <Link to="/sales">Sales</Link>
+                                <Link to="/purchase">Purchase</Link>
                             </DrawerContent>
                         </Drawer>
                     </Box>

@@ -4,7 +4,7 @@ import UserDetail from "./components/userform"
 import { listUsers } from "../../services/Users";
 import CustomModal from "../../common/modal";
 import { connect } from "react-redux";
-import { enableUser, disableUser, listUserRole } from "../../services/Users";
+import { enableUser, disableUser } from "../../services/Users";
 import "react-tabulator/css/bulma/tabulator_bulma.min.css"
 import {
     Spinner,
@@ -31,10 +31,6 @@ function User(props) {
             field: "username",
             hozAlign: "left"
         },
-        // {
-        //     title: "profileImage",
-        //     field: "profileImage",
-        // },
         {
             title: "Email Address",
             field: "emailAddress",
@@ -46,11 +42,6 @@ function User(props) {
             hozAlign: "left",
             formatter: "tickCross",
             editor: props.profile.role === "Admins"
-        },
-        {
-            title: "Role",
-            field: "role",
-            hozAlign: "left"
         }
     ]
     const columnConfig = {
@@ -66,22 +57,11 @@ function User(props) {
             let temp = []
 
             res.forEach((item, index) => {
-                let x = ""
-                listUserRole(item.Attributes[0].Value).then(Response => {
-
-                    // console.log(Response.Groups[0], item.Attributes[4].Value);
-                    if (Response.Groups[0] !== undefined)
-                        x = Response.Groups[0].GroupName
-
-                }).catch(err => console.log(err))
-
-                // console.log(x);
                 temp.push({
                     serialNo: index + 1,
                     username: item.Attributes[3].Value,
                     emailAddress: item.Attributes[4].Value,
-                    status: item.Enabled,
-                    role: x
+                    status: item.Enabled
                 })
             })
             setUsers(temp)

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Page404 from "./common/layout/errors/Page404";
 import { connect } from "react-redux";
@@ -26,8 +26,6 @@ const Router = (props) => {
 
     return (
         <Routes>
-            <Route path="/" element={<Home />} />
-
             {(props.profile.role === "Admins" || props.profile.role === "Users") && <Route path="/users/*" element={<Users />} />}
 
             {(props.profile.role === "Admins" || props.profile.role === "Users") && <>

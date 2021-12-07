@@ -6,7 +6,6 @@ import {
     Input,
     Box,
     Container,
-    Text,
     Button
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";

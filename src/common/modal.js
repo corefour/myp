@@ -4,10 +4,8 @@ import {
     ModalOverlay,
     ModalContent,
     ModalHeader,
-    ModalFooter,
     ModalBody,
-    ModalCloseButton,
-    Button
+    ModalCloseButton
 } from '@chakra-ui/react'
 
 function CustomModal(props) {

@@ -13,7 +13,7 @@ import { getCurrentUserRole } from "../../services/user"
 function Dashboard(props) {
     useEffect(() => {
         let temp = props.userdata
-        getCurrentUserRole().then(res => temp["role"] = res)
+        getCurrentUserRole().then((res) => console.log(res))
         props.set_userData(temp)
 
 

@@ -20,6 +20,7 @@ import { FaBars, FaUserCircle } from 'react-icons/fa';
 import { Auth } from 'aws-amplify';
 import { connect } from "react-redux";
 
+
 function TopBar(props) {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const btnRef = React.useRef();
@@ -51,9 +52,8 @@ function TopBar(props) {
                             <DrawerOverlay />
                             <DrawerContent py="50px" px="20px" className="sidenav">
                                 <DrawerCloseButton />
-                                {/* <Link to="/dashboard">Dashboard</Link> */}
-                                <Link to="/users">Users</Link>
-                                <Link to="/company">Company</Link>
+                                {(props.profile.role === "Admins" || props.profile.role === "Users") && <Link to="/users">Users</Link>}
+                                {(props.profile.role === "Admins" || props.profile.role === "Users") && <Link to="/company">Company</Link>}
                                 <Link to="/products">Product</Link>
                                 <Link to="/sales">Sales</Link>
                                 <Link to="/purchase">Purchase</Link>

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Page404 from "./common/layout/errors/Page404";
-import Home from "./pages/Home/index";
+import { connect } from "react-redux";
+
 
 //User Pages
 import Users from "./pages/Users";
@@ -19,22 +20,17 @@ import CreateExpenditures from "./pages/purchaseManagement/components/createExpe
 import GetExpenditures from "./pages/purchaseManagement/components/getExpenditures";
 // Sales Page
 import Sales from "./pages/Sales";
-// User role
-import { getCurrentUserRole } from "./services/user";
 
 
-const Router = () => {
-    const [role, setRole] = useState()
-
-    useEffect(() => { getCurrentUserRole().then((res) => setRole(res)) }, [])
+const Router = (props) => {
 
     return (
         <Routes>
             <Route path="/" element={<Home />} />
 
-            {(role === "Admins" || role === "Users") && <Route path="/users/*" element={<Users />} />}
+            {(props.profile.role === "Admins" || props.profile.role === "Users") && <Route path="/users/*" element={<Users />} />}
 
-            {(role === "Admins" || role === "Users") && <>
+            {(props.profile.role === "Admins" || props.profile.role === "Users") && <>
                 <Route path="/company/*" element={<Company />} />
                 <Route path="/company/:id" exact element={<CompanyProfile />} />
             </>}
@@ -43,11 +39,11 @@ const Router = () => {
             <Route path="/products/create" exact element={<ProductCreate />} />
             <Route path="/products/edit/:id" exact element={<ProductEdit />} />
 
-            <Route path='/purchase/' element={<Purchases/>} />
-            <Route path='/purchase/create' exact element={<CreatePurchase />}/>
+            <Route path="/purchase/" element={<Purchases />} />
+            <Route path="/purchase/create" exact element={<CreatePurchase />} />
 
-            <Route path='purchase/expenditures/' element={<CreateExpenditures />} />
-            <Route path='purchase/expendituresById/' element={<GetExpenditures />} />
+            <Route path="purchase/expenditures/" element={<CreateExpenditures />} />
+            <Route path="purchase/expendituresById/" element={<GetExpenditures />} />
 
 
             <Route path="/sales" exact element={<Sales />} />
@@ -59,4 +55,6 @@ const Router = () => {
     )
 }
 
-export default Router;
+const mapStateToProps = (state) => { return { profile: state.greduce.profile } }
+
+export default connect(mapStateToProps)(Router)

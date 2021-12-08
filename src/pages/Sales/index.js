@@ -16,23 +16,28 @@ function Sales() {
     const [sales, setSales] = useState([])
     const columns = [
         {
-            title: "Company Name",
-            field: "name",
+            title: "Sr. No.",
+            field: "1",
             hozAlign: "left"
         },
         {
-            title: "Company Owner",
-            field: "owner",
+            title: "Product Name",
+            field: "product",
             hozAlign: "left"
         },
         {
-            title: "Company created",
-            field: "createdAt",
+            title: "Product Image",
+            field: "image",
             hozAlign: "left"
         },
         {
-            title: "Company Description",
-            field: "description",
+            title: "Quantity Left",
+            field: "quantity",
+            hozAlign: "left"
+        },
+        {
+            title: "Add",
+            field: "quantity",
             hozAlign: "left"
         }
     ]

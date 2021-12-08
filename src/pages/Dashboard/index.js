@@ -8,12 +8,14 @@ import { connect } from "react-redux";
 import { set_userData, set_roles } from "../../redux/dispatch/dispatch";
 import { listGroups } from "../../services/Users";
 import { getCurrentUserRole } from "../../services/user"
+import { singleUser } from "../../services/DBUser";
 
 
 function Dashboard(props) {
     useEffect(() => {
         let temp = props.userdata
         getCurrentUserRole().then(res => temp["role"] = res)
+        singleUser(props.userdata.sub).then(res => temp["companyID"] = res.data.getUser.companyID)
         props.set_userData(temp)
 
 

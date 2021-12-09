@@ -1,12 +1,21 @@
 import { API} from 'aws-amplify';
 import { createSale, deleteSale, updateSale} from './../../graphql/mutations';
 import { getSale, listSales } from './../../graphql/queries';
+import { editProduct } from './../Product';
 
 export async function addSale(variables) {
     try {
         return await API.graphql({
             query: createSale,
             variables: variables,
+        }).then((res) => {
+            const { id, quantity } = res.data.createSale.product
+            editProduct({
+                input: {
+                    id:id,
+                    quantity: quantity
+                }
+            })
         })
     } catch ({ err }) {
         return err;

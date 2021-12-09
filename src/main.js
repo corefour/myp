@@ -6,6 +6,7 @@ import awsconfig from "./aws-exports";
 import { ChakraProvider } from "@chakra-ui/react";
 import "./style.css";
 import Dashboard from "./pages/Dashboard/index";
+import {addSale } from './services/Sales';
 
 Amplify.configure(awsconfig);
 

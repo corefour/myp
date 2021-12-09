@@ -41,8 +41,19 @@ export const onCreateSale = /* GraphQL */ `
   subscription OnCreateSale {
     onCreateSale {
       id
-      sales
-      total
+      product {
+        id
+        name
+        description
+        image
+        price
+        quantity
+        custom_attributes
+        companyID
+        createdAt
+        updatedAt
+      }
+      quantity
       companyID
       createdAt
       updatedAt
@@ -53,8 +64,19 @@ export const onUpdateSale = /* GraphQL */ `
   subscription OnUpdateSale {
     onUpdateSale {
       id
-      sales
-      total
+      product {
+        id
+        name
+        description
+        image
+        price
+        quantity
+        custom_attributes
+        companyID
+        createdAt
+        updatedAt
+      }
+      quantity
       companyID
       createdAt
       updatedAt
@@ -65,8 +87,19 @@ export const onDeleteSale = /* GraphQL */ `
   subscription OnDeleteSale {
     onDeleteSale {
       id
-      sales
-      total
+      product {
+        id
+        name
+        description
+        image
+        price
+        quantity
+        custom_attributes
+        companyID
+        createdAt
+        updatedAt
+      }
+      quantity
       companyID
       createdAt
       updatedAt
@@ -168,8 +201,7 @@ export const onCreateCompany = /* GraphQL */ `
       Sales {
         items {
           id
-          sales
-          total
+          quantity
           companyID
           createdAt
           updatedAt
@@ -239,8 +271,7 @@ export const onUpdateCompany = /* GraphQL */ `
       Sales {
         items {
           id
-          sales
-          total
+          quantity
           companyID
           createdAt
           updatedAt
@@ -310,8 +341,7 @@ export const onDeleteCompany = /* GraphQL */ `
       Sales {
         items {
           id
-          sales
-          total
+          quantity
           companyID
           createdAt
           updatedAt

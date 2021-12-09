@@ -36,8 +36,19 @@ export const getSale = /* GraphQL */ `
   query GetSale($id: ID!) {
     getSale(id: $id) {
       id
-      sales
-      total
+      product {
+        id
+        name
+        description
+        image
+        price
+        quantity
+        custom_attributes
+        companyID
+        createdAt
+        updatedAt
+      }
+      quantity
       companyID
       createdAt
       updatedAt
@@ -53,8 +64,19 @@ export const listSales = /* GraphQL */ `
     listSales(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        sales
-        total
+        product {
+          id
+          name
+          description
+          image
+          price
+          quantity
+          custom_attributes
+          companyID
+          createdAt
+          updatedAt
+        }
+        quantity
         companyID
         createdAt
         updatedAt
@@ -149,8 +171,7 @@ export const getCompany = /* GraphQL */ `
       Sales {
         items {
           id
-          sales
-          total
+          quantity
           companyID
           createdAt
           updatedAt
@@ -331,8 +352,19 @@ export const salesByCompany = /* GraphQL */ `
     ) {
       items {
         id
-        sales
-        total
+        product {
+          id
+          name
+          description
+          image
+          price
+          quantity
+          custom_attributes
+          companyID
+          createdAt
+          updatedAt
+        }
+        quantity
         companyID
         createdAt
         updatedAt

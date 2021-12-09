@@ -53,8 +53,19 @@ export const createSale = /* GraphQL */ `
   ) {
     createSale(input: $input, condition: $condition) {
       id
-      sales
-      total
+      product {
+        id
+        name
+        description
+        image
+        price
+        quantity
+        custom_attributes
+        companyID
+        createdAt
+        updatedAt
+      }
+      quantity
       companyID
       createdAt
       updatedAt
@@ -68,8 +79,19 @@ export const updateSale = /* GraphQL */ `
   ) {
     updateSale(input: $input, condition: $condition) {
       id
-      sales
-      total
+      product {
+        id
+        name
+        description
+        image
+        price
+        quantity
+        custom_attributes
+        companyID
+        createdAt
+        updatedAt
+      }
+      quantity
       companyID
       createdAt
       updatedAt
@@ -83,8 +105,19 @@ export const deleteSale = /* GraphQL */ `
   ) {
     deleteSale(input: $input, condition: $condition) {
       id
-      sales
-      total
+      product {
+        id
+        name
+        description
+        image
+        price
+        quantity
+        custom_attributes
+        companyID
+        createdAt
+        updatedAt
+      }
+      quantity
       companyID
       createdAt
       updatedAt
@@ -198,8 +231,7 @@ export const createCompany = /* GraphQL */ `
       Sales {
         items {
           id
-          sales
-          total
+          quantity
           companyID
           createdAt
           updatedAt
@@ -272,8 +304,7 @@ export const updateCompany = /* GraphQL */ `
       Sales {
         items {
           id
-          sales
-          total
+          quantity
           companyID
           createdAt
           updatedAt
@@ -346,8 +377,7 @@ export const deleteCompany = /* GraphQL */ `
       Sales {
         items {
           id
-          sales
-          total
+          quantity
           companyID
           createdAt
           updatedAt

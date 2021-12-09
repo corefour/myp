@@ -33,15 +33,18 @@ function EditSale(props) {
 
     function onSubmit(values) {
         if (props.selectedSales !== null) {
-            editSale({ id: props.selectedSales.id, quantity: values.quantity }).then(res => console.log(res))
+            console.log({ input: { id: props.selectedSales.id, quantity: values.quantity } })
+            editSale({ input: { id: props.selectedSales.id, quantity: values.quantity } }).then(res => console.log(res))
         }
         else {
-            addSale({ id: values.product, quantity: values.quantity }).then(res => console.log(res))
+            console.log({ input: { id: values.product, quantity: values.quantity } })
+            addSale({ input: { id: values.product, quantity: values.quantity } }).then(res => console.log(res))
         }
     }
 
     function deleteProduct() {
-        removeSale(props.selectedSales.id).then(res => console.log(res))
+        console.log(props.selectedSales.id);
+        // removeSale(props.selectedSales.id).then(res => console.log(res))
     }
 
     return (

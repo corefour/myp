@@ -1,5 +1,5 @@
-import { API} from 'aws-amplify';
-import { createSale, deleteSale, updateSale} from './../../graphql/mutations';
+import { API } from 'aws-amplify';
+import { createSale, deleteSale, updateSale } from './../../graphql/mutations';
 import { getSale, listSales } from './../../graphql/queries';
 import { editProduct } from './../Product';
 
@@ -12,7 +12,7 @@ export async function addSale(variables) {
             const { id, quantity } = res.data.createSale.product
             editProduct({
                 input: {
-                    id:id,
+                    id: id,
                     quantity: quantity
                 }
             })

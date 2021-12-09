@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Page404 from "./common/layout/errors/Page404";
 import { connect } from "react-redux";
-
-
+import { set_userData } from "./redux/dispatch/dispatch";
+import { getCurrentUserRole } from "./services/user";
+// Home Page
+import Home from "./pages/home";
 //User Pages
 import Users from "./pages/Users";
 //Company Page
@@ -22,13 +24,17 @@ import GetExpenditures from "./pages/purchaseManagement/components/getExpenditur
 import Sales from "./pages/Sales";
 
 
-const Router = (props) => {
+function Router(props) {
+    const [role, setRole] = useState()
+    useEffect(() => { getCurrentUserRole().then((res) => { setRole(res) }) }, [])
 
     return (
         <Routes>
-            {(props.profile.role === "Admins" || props.profile.role === "Users") && <Route path="/users/*" element={<Users />} />}
+            <Route path="/" exact element={<Home role={role} />} />
 
-            {(props.profile.role === "Admins" || props.profile.role === "Users") && <>
+            {(role === "Admins" || role === "Users") && <Route path="/users/*" element={<Users />} />}
+
+            {(role === "Admins" || role === "Users") && <>
                 <Route path="/company/*" element={<Company />} />
                 <Route path="/company/:id" exact element={<CompanyProfile />} />
             </>}
@@ -43,9 +49,7 @@ const Router = (props) => {
             <Route path="purchase/expenditures/" element={<CreateExpenditures />} />
             <Route path="purchase/expendituresById/" element={<GetExpenditures />} />
 
-
             <Route path="/sales" exact element={<Sales />} />
-
 
             {/* Do not remove this route its for 404 */}
             <Route path="*" element={<Page404 />} />
@@ -55,4 +59,13 @@ const Router = (props) => {
 
 const mapStateToProps = (state) => { return { profile: state.greduce.profile } }
 
-export default connect(mapStateToProps)(Router)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        set_userData: (options) => {
+            dispatch(set_userData(options))
+        }
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Router)

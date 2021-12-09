@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
-import Table from "../../common/table"
-import UserDetail from "./components/userform"
+import Table from "../../common/table";
+import UserDetail from "./components/userform";
 import { listUsers } from "../../services/Users";
+import { getUsersByCompany } from "../../services/Company";
 import CustomModal from "../../common/modal";
 import { connect } from "react-redux";
 import { enableUser, disableUser } from "../../services/Users";
@@ -53,40 +54,39 @@ function User(props) {
 
     useEffect(() => {
         setLoading(true)
-        listUsers(10).then((res) => {
-            let temp = []
+        let temp = []
+        {
+            props.profile.role === "Admins" ?
+                listUsers(10).then((res) => {
+                    res.forEach((item, index) => {
+                        temp.push({
+                            serialNo: index + 1,
+                            username: item.Attributes[3].Value,
+                            emailAddress: item.Attributes[4].Value,
+                            status: item.Enabled
+                        })
+                    })
+                    setUsers(temp)
+                }) :
+                getUsersByCompany(props.profile.companyID).then(res => {
+                    if (res.data.usersByCompany !== null) {
 
-            res.forEach((item, index) => {
-                temp.push({
-                    serialNo: index + 1,
-                    username: item.Attributes[3].Value,
-                    emailAddress: item.Attributes[4].Value,
-                    status: item.Enabled
+                        res.data.usersByCompany.items.forEach((item, index) => {
+                            temp.push({
+                                serialNo: index + 1,
+                                username: item.name,
+                                emailAddress: item.email,
+                                status: true
+                            })
+
+                        })
+                        setUsers(temp)
+                    }
                 })
-            })
-            setUsers(temp)
-        })
+        }
         setLoading(false)
-    }, [])
+    }, [props])
 
-    function userStatus(value) {
-        if (value.status) {
-            disableUser(value.emailAddress)
-                .then(res => {
-                    let temp = [...selectedUser]
-                    temp[value.serialNo - 1].status = false
-                    setSelectedUser(temp)
-                }).catch(err => console.log(err))
-        }
-        else {
-            enableUser(value.emailAddress)
-                .then(res => {
-                    let temp = [...selectedUser]
-                    temp[value.serialNo - 1].status = true
-                    setSelectedUser(temp)
-                }).catch(err => console.log(err))
-        }
-    }
 
     return (
         <>
@@ -107,16 +107,19 @@ function User(props) {
                                 columns={columns}
                                 options={columnConfig}
                                 innerRef={tableref}
-                                rowClick={props.profile.role === "Users" ? ((e, row) => {
+                                // rowClick={props.profile.role === "Admins" ? (() => { }) : ((e, row) => {
+                                //     setSelectedUser(row.getData())
+                                //     onOpen()
+                                // })}
+                                rowClick={(e, row) => {
                                     setSelectedUser(row.getData())
                                     onOpen()
-                                }) : (() => { })}
-                                cellClick={props.profile.role === "Admins" ? ((e, cell) => userStatus(cell.getData())) : (() => { })}
+                                }}
                             />
                             <CustomModal
                                 isOpen={isOpen}
                                 onClose={onClose}
-                                title={props.profile.role === "Users" ? (selectedUser === null ? "Add User" : "Edit User Role") : (selectedUser === null ? "" : "Enable User")}
+                                title={selectedUser === null ? "Add User" : "Edit User"}
                                 body={<UserDetail selectedUser={selectedUser} setSelectedUser={setSelectedUser} />}
                             />
                             <Button

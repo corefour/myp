@@ -5,7 +5,6 @@ import { listUsers } from "../../services/Users";
 import { getUsersByCompany } from "../../services/Company";
 import CustomModal from "../../common/modal";
 import { connect } from "react-redux";
-import { enableUser, disableUser } from "../../services/Users";
 import "react-tabulator/css/bulma/tabulator_bulma.min.css"
 import {
     Spinner,

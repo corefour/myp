@@ -35,15 +35,6 @@ function CreatePurchase(){
                 <Link to="/purchase" className="btn-custom">Back</Link>
                 <Box className="form" boxSize="sm" mx="auto">
                     <Text fontSize='3xl' mb="20px">Add a New Order</Text>
-                    {/* <Button
-                        mb="20px"
-                        type='button'
-                        bgColor="pink.500"
-                        color="blue.50"
-                        _hover={{ bg: "pink.700" }}
-                    >
-                        Import from CSV/Excel
-                    </Button> */}
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <FormControl isInvalid={errors.expenditure}>
                             <FormLabel htmlFor="itemsOrdered">Items Ordered</FormLabel>
@@ -63,7 +54,7 @@ function CreatePurchase(){
                         </FormControl>
                         <FormControl mt={4} isInvalid={errors.dateOfOrder}>
                             <FormLabel htmlFor="dateOfOrder">Date of Order</FormLabel>
-                            <Input placeholder="Date of Order" id="dateOfOrder"
+                            <Input placeholder="Date of Order" id="dateOfOrder" type="date"
                             {...register("dateOfOrder", {required: "This is required"})} />
                             <FormErrorMessage>
                                 {errors.dateOfOrder && errors.dateOfOrder.message}

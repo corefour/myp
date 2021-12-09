@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { allSales } from "../../services/Sales";
 import Table from "../../common/table";
 import CustomModal from "../../common/modal";
+import EditSale from "./component/editsale";
 import "react-tabulator/css/bulma/tabulator_bulma.min.css";
 import {
     Box,
@@ -14,10 +15,11 @@ import {
 
 function Sales() {
     const [sales, setSales] = useState([])
+    const [selectedSales, setSelectedSales] = useState(null)
     const columns = [
         {
             title: "Sr. No.",
-            field: "1",
+            field: "srno",
             hozAlign: "left"
         },
         {
@@ -26,17 +28,12 @@ function Sales() {
             hozAlign: "left"
         },
         {
-            title: "Product Image",
-            field: "image",
+            title: "Product Description",
+            field: "description",
             hozAlign: "left"
         },
         {
             title: "Quantity Left",
-            field: "quantity",
-            hozAlign: "left"
-        },
-        {
-            title: "Add",
             field: "quantity",
             hozAlign: "left"
         }
@@ -52,9 +49,21 @@ function Sales() {
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     useEffect(() => {
+        setLoading(true)
+        let temp = []
         allSales().then(res => {
-            console.log(res);
+            res.data.listSales.items.forEach((element, index) => {
+                temp.push({
+                    id: element.product.id,
+                    srno: index + 1,
+                    product: element.product.name,
+                    description: element.product.description,
+                    quantity: element.quantity
+                })
+            });
+            setSales(temp)
         })
+        setLoading(false)
     }, [])
 
     return (
@@ -77,19 +86,20 @@ function Sales() {
                                 options={columnConfig}
                                 innerRef={tableref}
                                 rowClick={((e, row) => {
-                                    console.log(row.getData());
-                                    // <Link to={"/" + row.getData().id + "/"} />
+                                    setSelectedSales(row.getData())
+                                    onOpen()
                                 })}
                             />
                             <CustomModal
                                 isOpen={isOpen}
                                 onClose={onClose}
                                 title="Add Sales"
-                                // body={<AddCompany setCompanys={setCompanys} />}
+                                body={<EditSale selectedSales={selectedSales} />}
                             />
 
                             <Button
                                 onClick={() => {
+                                    setSelectedSales(null)
                                     onOpen()
                                 }}
                                 float="right"

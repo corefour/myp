@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useEffect } from "react"
 import {
     FormControl,
     FormLabel,
@@ -46,7 +46,7 @@ function UserDetail(props) {
         if (props.selectedUser === null) {
             addUserToGroup(values.email, values.role).then(res => console.log(res))
         }
-        else{
+        else {
             UsersRoleUpdate(values.email, values.role).then(res => console.log(res))
         }
     }

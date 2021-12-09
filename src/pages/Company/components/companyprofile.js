@@ -11,7 +11,6 @@ import {
     Text
 } from "@chakra-ui/react";
 import logo from "../../../assets/company-logo.png";
-import bg from "../../../assets/bg.jpg";
 import Products from "../../Products";
 import Sales from "../../Sales";
 import { useParams } from "react-router-dom";

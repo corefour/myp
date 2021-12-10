@@ -9,6 +9,7 @@ export async function addSale(variables) {
             query: createSale,
             variables: variables,
         }).then((res) => {
+            
             const { id, quantity } = res.data.createSale.product
             editProduct({
                 input: {

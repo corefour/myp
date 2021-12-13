@@ -1,70 +1,19 @@
-# Getting Started with Create React App
+# CMPE 272
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About Project
+The main objective of developing the current project entitled “Mind the Product” is to build an effective system which is flexible enough to incorporate any future enhancements. Back in the days a shop owner used to manage all his sales and accounts manually on paper. This project describes the system which not only records the sales but also notifies the retailer about the items low in stock. This is widely used by retailers, shopkeepers and other merchants across different businesses. This project mainly deals with the problems like availability of stock, sales of the product, time to reorder a particular product. It provides a solution of an automated system which helps to manage their stocks. Suppose a customer purchases a particular product from the store, during the billing period the product is scanned and updated in the database of the system. By this we can track the sales of the product, availability and which items to reorder. The stock management system contains 4 main modules. Firstly, the User Management module allows users to login through SSO and displays all the user specific information. It permits adding users and suppliers, and lists users and suppliers. Secondly, the Product Management module is used for managing the items being stocked in mart which includes adding, listing and printing the barcode of the products. Thirdly, the Purchase Management module manages all the purchases done by the retailer, helps in maintaining the records of all the purchases from various suppliers, internally maintains the orders and expenditures. Finally, the Sales Management module deals with the billing and other transactions which includes details about the deliveries, sales and products.
 
-## Available Scripts
+## Links to all the documents and demo video
+https://drive.google.com/drive/folders/1opJAgLhxb6wRG4OGQDr5U5Syd6R9j1z4?usp=sharing
 
-In the project directory, you can run:
+https://main.d5f1twmgpm4pl.amplifyapp.com/
 
-### `yarn start`
+## Submitted by:
+Yash Kamtekar (yash.kamtekar@sjsu.edu) (DS)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Raj Paragbhai Kinkhabwala (rajparagbhai.kinkhabwala@sjsu.edu) (Cloud)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Shivani Pandit (shivani.pandit@sjsu.edu) (Cloud)
 
-### `yarn test`
+Anusha Gangasani (anusha.gangasani@sjsu.edu) (DS)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
